@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="read_end_count">累计阅读%d分钟｜平均%d字/分钟</string>
+    <string name="read_end_chapter">共%d章｜已读%d章</string>
+    <string name="read_status_preview">预览中</string>
+    <string name="read_status_to_be_continued">未完待续</string>
+    <string name="read_status_end">已读完</string>
+    <string name="read_status_ing">未读完</string>
+
+    <string name="purify_default">书源内置规则</string>
+    <string name="purify_custom">用户自设规则</string>
+    <string name="purify_custom_tips">阅读时长按新建规则</string>
+    <string name="purify_create">新建屏蔽规则</string>
+    <string name="purify_create_hint">替换词（选填）</string>
+    <string name="purify_create_regex_tips">建议在充分理解正则表达式的前提下使用</string>
+    <string name="purify_create_regex_hint">正则表达式（必填）</string>
+</resources>

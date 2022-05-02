@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_selectable_item_transparent"
+    android:orientation="vertical">
+
+    <CheckBox
+        android:id="@+id/mCheckableChapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_medium"
+        android:button="@drawable/ic_check_box"
+        android:padding="@dimen/padding_medium"
+        android:textColor="@color/color_check_box"
+        tools:text="第一章 醒来（上）" />
+
+</LinearLayout>

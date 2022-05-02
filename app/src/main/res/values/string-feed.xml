@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feed_clean_completed">已读清理完成</string>
+    <string name="feed_verify">订阅频道</string>
+    <string name="feed_verify_hint">例如 https://sspai.com/feed</string>
+    <string name="feed_select_group">选择分组</string>
+    <string name="feed_group_create">新建分组</string>
+    <string name="feed_group_create_by_tag">推荐「%s」分组</string>
+    <string name="feed_group_create_by_self">新建「%s」分组</string>
+    <string name="feed_group_create_same_warning">已存在同名分组</string>
+    <string name="feed_group_create_built_in">无法创建内置同名分组</string>
+    <string name="feed_subscribe_success">订阅成功</string>
+    <string name="feed_subscribe_failure">订阅失败，频道无内容</string>
+    <string name="feed_subscribe">订阅</string>
+    <string name="feed_unsubscribe">取消订阅</string>
+    <string name="feed_manage">频道管理</string>
+
+    <string name="feed_clear_current">清理当前分组</string>
+    <string name="feed_clear_all">清理全部分组</string>
+    <string name="flow_collect">收藏</string>
+    <string name="flow_collected">取消收藏</string>
+
+    <string name="feed_pushpin">添加到指定书架</string>
+    <string name="feed_pushpin_cancel">取消添加到书架</string>
+    <string name="feed_pushpin_success">添加成功</string>
+    <string name="feed_pushpin_failure">单个书架最多添加1个分组</string>
+
+    <string name="flow_menu_open_url">打开原网页</string>
+    <string name="flow_menu_open_url_by_browser">用浏览器打开原网页</string>
+
+</resources>

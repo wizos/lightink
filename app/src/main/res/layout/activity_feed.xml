@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:id="@+id/mTopbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/add">
+
+        <ImageButton
+            android:id="@+id/mFeedClean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="48dp"
+            android:background="@drawable/selected_background_borderless_action"
+            android:contentDescription="@null"
+            android:padding="@dimen/padding_vertical"
+            android:src="@drawable/ic_action_clean" />
+
+    </cn.lightink.reader.widget.TopbarView>
+
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:id="@+id/mFeedTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_below="@+id/mTopbar"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="-6dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        app:stl_defaultTabTextColor="@color/color_tab_text"
+        app:stl_defaultTabTextHorizontalPadding="12dp"
+        app:stl_defaultTabTextSize="16sp"
+        app:stl_dividerThickness="0dp"
+        app:stl_indicatorColor="@color/colorFlower"
+        app:stl_indicatorCornerRadius="1.5dp"
+        app:stl_indicatorInterpolation="linear"
+        app:stl_indicatorThickness="3dp"
+        app:stl_indicatorWidth="24dp"
+        app:stl_underlineThickness="0dp" />
+
+    <ImageButton
+        android:id="@+id/mFeedManage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mTopbar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/selected_background_borderless_fill"
+        android:contentDescription="@string/setting"
+        android:padding="12dp"
+        android:src="@drawable/ic_feed_menu" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/mFeedViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mFeedTabLayout"
+        android:overScrollMode="never" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mTopbar" />
+
+</RelativeLayout>

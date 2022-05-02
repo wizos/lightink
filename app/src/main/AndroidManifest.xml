@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.lightink.reader">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="cn.lightink.reader.App"
+        android:allowBackup="false"
+        android:extractNativeLibs="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="n">
+
+        <activity
+            android:name="cn.lightink.reader.ui.main.MainActivity"
+            android:theme="@style/AppTheme.Splash"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:mimeType="text/*" />
+                <data android:mimeType="application/epub+zip" />
+                <data android:mimeType="application/x-expandedbook" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\.epub" />
+                <data android:pathPattern=".*\.mobi" />
+                <data android:pathPattern=".*\.azw3" />
+                <data android:pathPattern=".*\.azw" />
+                <data android:pathPattern=".*\.txt" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\.epub" />
+                <data android:pathPattern=".*\.mobi" />
+                <data android:pathPattern=".*\.azw3" />
+                <data android:pathPattern=".*\.azw" />
+                <data android:pathPattern=".*\.txt" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <activity android:name="cn.lightink.reader.ui.main.SearchActivity" >
+
+        </activity>
+
+        <activity android:name="cn.lightink.reader.ui.book.BookDetailActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.book.BookCoverActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.book.BookSummaryActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.bookshelf.BookshelfEditActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.booksource.BookSourceActivity" />
+
+        <activity
+            android:name="cn.lightink.reader.ui.booksource.BookSourceAuthActivity"
+            android:launchMode="singleTask"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="ssl.ptlogin2.qq.com"
+                    android:path="/jump"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="cn.lightink.reader.ui.booksource.BookSourcePurifyActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.feed.FeedActivity" />
+
+
+        <activity
+            android:name="cn.lightink.reader.ui.reader.ReaderActivity"
+            android:configChanges="screenLayout|screenSize|smallestScreenSize|orientation" />
+
+        <activity android:name="cn.lightink.reader.ui.reader.ReaderFontActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.reader.ReaderChangeBookSourceActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.discover.help.HelpActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.discover.setting.SettingActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.discover.setting.OpenSourceActivity" />
+
+
+        <activity android:name="cn.lightink.reader.ui.discover.setting.MemoryActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.booksource.rank.BookRankActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.booksource.rank.BookRankSettingsActivity" />
+
+        <activity
+            android:name="cn.lightink.reader.ui.booksource.BookSourceVerifyActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+
+        <activity
+            android:name="cn.lightink.reader.ui.reader.ListeningActivity"
+            android:launchMode="singleTop" />
+
+        <activity android:name="cn.lightink.reader.ui.discover.AirPlayActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.reader.theme.ThemeEditorActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.feed.FeedVerifyActivity" />
+        <activity android:name="cn.lightink.reader.ui.feed.FeedManagementActivity" />
+        <activity android:name="cn.lightink.reader.ui.feed.FlowActivity" />
+
+        <activity android:name="cn.lightink.reader.ui.dashboard.BookManagerActivity" />
+
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait" />
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.4" />
+
+        <service
+            android:name="cn.lightink.reader.net.AirPlayService"
+            android:exported="false" />
+
+        <service
+            android:name="cn.lightink.reader.module.ListeningService"
+            android:exported="false" />
+
+        <receiver android:name="cn.lightink.reader.module.ListeningBroadcastReceiver" />
+
+    </application>
+
+</manifest>

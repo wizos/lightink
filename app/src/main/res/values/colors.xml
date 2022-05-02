@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 基础 -->
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorForeground">#F6F6F6</color>
+    <color name="colorAccent">#1980FF</color>
+
+    <!-- 内容 -->
+    <color name="colorTitle">#222A2C</color>
+    <color name="colorContent">#888A8C</color>
+    <color name="colorNormal">#AFAFAF</color>
+    <color name="colorRipple">#DFDFDF</color>
+    <color name="colorStroke">#ECECEC</color>
+
+    <!-- 状态 -->
+    <color name="colorStatusGeneral">#F3AD3B</color>
+    <color name="colorStatusGreat">#19D9CE</color>
+
+    <!-- 金券 -->
+    <color name="colorFlower">#FD602D</color>
+
+    <!-- 标签 -->
+    <color name="colorRedBackground">#FFF7F5</color>
+    <color name="colorRed">#FF605B</color>
+    <color name="colorBlueBackground">#F0F9FF</color>
+    <color name="colorGreen">#15C781</color>
+    <color name="colorGrapefruit">#FD8469</color>
+
+</resources>

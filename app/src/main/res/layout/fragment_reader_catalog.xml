@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/mReaderMenuTopbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topbarDefaultSize"
+        android:layout_marginTop="@dimen/margin_vertical">
+
+        <ImageButton
+            android:id="@+id/mReaderMenuArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/selected_background_borderless"
+            android:contentDescription="@string/accessibility_shutdown"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/mReaderMenuTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/mReaderMenuListen"
+            android:layout_toEndOf="@+id/mReaderMenuArrow"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textSize="16sp"
+            tools:ignore="RelativeOverlap"
+            tools:text="诡秘之主" />
+
+        <ImageButton
+            android:id="@+id/mReaderMenuListen"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="-8dp"
+            android:layout_toStartOf="@+id/mReaderMenuNight"
+            android:background="@drawable/selected_background_borderless"
+            android:contentDescription="@string/accessibility_listen"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:src="@drawable/ic_reader_listen" />
+
+        <ImageButton
+            android:id="@+id/mReaderMenuNight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/selected_background_borderless"
+            android:contentDescription="@string/accessibility_theme"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            tools:src="@drawable/ic_reader_night" />
+
+        <ImageButton
+            android:id="@+id/mReaderMenuSort"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="4dp"
+            android:alpha="0"
+            android:background="@drawable/selected_background_borderless"
+            android:contentDescription="@string/accessibility_sort"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:src="@drawable/ic_sort_ascending"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller
+        android:id="@+id/mReaderFastScroller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mReaderMenuTopbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mReaderCatalog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:paddingBottom="12dp" />
+    </com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller>
+</RelativeLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_horizontal"
+    android:background="@drawable/bg_dialog_round"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:padding="@dimen/padding"
+        android:text="@string/feed_group_create"
+        android:textColor="@color/colorTitle"
+        android:textSize="16sp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/mFeedGroupCreateInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:backgroundTint="@color/colorAccent"
+        android:imeOptions="actionSend"
+        android:includeFontPadding="false"
+        android:maxLength="4"
+        android:maxLines="1"
+        android:paddingTop="12dp"
+        android:paddingBottom="16dp"
+        android:singleLine="true"
+        android:textCursorDrawable="@null"
+        android:textSize="14sp">
+
+        <requestFocus />
+    </com.google.android.material.textfield.TextInputEditText>
+
+    <TextView
+        android:id="@+id/mFeedGroupCreateSubmit"
+        style="@style/Lightink.Button.Round"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:includeFontPadding="false"
+        android:text="@string/save"
+        android:textSize="14sp" />
+
+</LinearLayout>

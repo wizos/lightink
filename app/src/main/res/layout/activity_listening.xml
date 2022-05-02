@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:id="@+id/mTopbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen2v" />
+
+    <cn.lightink.reader.widget.ImageUriView
+        android:id="@+id/mBookCover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen2x"
+        tools:layout_height="168dp"
+        tools:layout_width="120dp" />
+
+    <cn.lightink.reader.widget.BoldTextView
+        android:id="@+id/mBookName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textSize="16sp"
+        tools:text="《嫌疑人X的献身》" />
+
+    <TextView
+        android:id="@+id/mBookChapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen0x"
+        android:layout_marginTop="@dimen/dimen2x"
+        android:layout_marginEnd="@dimen/dimen0x"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:lineSpacingMultiplier="1.1"
+        android:paddingStart="@dimen/dimen2x"
+        android:paddingEnd="@dimen/dimen2x"
+        android:textSize="14sp"
+        tools:text="第一章" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dimen2x"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingStart="@dimen/dimen2x"
+        android:paddingEnd="@dimen/dimen2x">
+
+        <TextView
+            android:id="@+id/mBookParagraph"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:lineSpacingMultiplier="1.1"
+            android:textSize="16sp"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeMinTextSize="8sp"
+            app:autoSizeTextType="uniform"
+            tools:text="一过了桥，他走下桥旁阶梯。穿过桥下，开始沿着隅田川走。河岸两边都设有步道。不过要是，全家出游或情侣散步，多半是从前面的清洲桥开始，即便是假 日也很少有人走到新大桥附近。只要一来到此处立刻会明白原因何在，因为放眼望去，是一整排游民用蓝色塑胶布覆盖的住处。正上方就是高速公路，所以此地用来 遮风避雨或许最理想不过。最好的证据，就是河对岸连一间蓝色小屋都没有，当然，这一方面大概也是因为对他们来说群居会比较方便吧。" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/mListeningEngine"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:background="@drawable/bg_card_round"
+        android:drawableStart="@drawable/ic_listen_voice"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:paddingStart="@dimen/padding_medium"
+        android:paddingEnd="@dimen/padding_medium"
+        android:text="@string/tts_engine_none"
+        tools:backgroundTint="@color/colorAccent"
+        tools:drawableTint="@color/colorForeground"
+        tools:textColor="@color/colorForeground" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/padding_medium"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large">
+
+        <TextView
+            android:id="@+id/mListeningTimer"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_card_round"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/timer" />
+
+        <TextView
+            android:id="@+id/mListeningPlay"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/padding_medium"
+            android:layout_weight="1"
+            android:background="@drawable/bg_card_round"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/play" />
+
+    </LinearLayout>
+
+</LinearLayout>

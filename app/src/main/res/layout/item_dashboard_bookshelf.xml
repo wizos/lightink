@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mBookshelfName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_dashboard_bookshelf_drawer"
+            android:drawablePadding="@dimen/padding"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding"
+            android:textColor="@color/colorTitle"
+            android:textSize="15sp"
+            tools:text="正在阅读" />
+
+        <ImageButton
+            android:id="@+id/mBookshelfEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/selected_background_borderless"
+            android:contentDescription="@string/edit"
+            android:padding="8dp"
+            android:src="@drawable/ic_action_more"
+            android:tint="@color/colorContent" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimenStroke"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:background="@color/colorStroke" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mBookRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:padding="@dimen/padding_vertical" />
+
+</LinearLayout>

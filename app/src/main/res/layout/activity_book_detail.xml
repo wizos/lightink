@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:id="@id/mTopbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lineEnabled="false"
+        app:menu="@menu/web"
+        tools:text="新参者" />
+
+    <cn.lightink.reader.widget.FlexLayout
+        style="@style/AppTheme.Flexible"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/mBookDetailAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:orientation="horizontal"
+                    app:layout_scrollFlags="scroll|enterAlways">
+
+                    <cn.lightink.reader.widget.ImageUriView
+                        android:id="@+id/mBookDetailCover"
+                        android:layout_width="90dp"
+                        android:layout_height="126dp"
+                        android:transitionName="@string/transition" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_large"
+                        android:orientation="vertical">
+
+                        <cn.lightink.reader.widget.BoldTextView
+                            android:id="@+id/mBookDetailName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="18sp"
+                            tools:text="故事新编 : 鲁迅小说精选集" />
+
+                        <TextView
+                            android:id="@+id/mBookDetailAuthor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding_small"
+                            android:layout_marginBottom="@dimen/padding_small"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="14sp"
+                            tools:text="鲁迅" />
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <cn.lightink.reader.widget.JustifyTextView
+                            android:id="@+id/mBookDetailSummary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lineSpacingMultiplier="1.25"
+                            android:maxLines="3"
+                            android:textColor="@color/colorContent"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:background="@color/colorStroke" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/mBookDetailCatalogLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen6x"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    android:visibility="invisible"
+                    app:contentInsetStart="20dp">
+
+                    <cn.lightink.reader.widget.BoldTextView
+                        android:id="@+id/mBookDetailCatalogTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="14sp" />
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mBookDetailRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingStart="@dimen/dimen1v"
+                android:paddingEnd="@dimen/dimen2v"
+                android:scrollbars="vertical"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </cn.lightink.reader.widget.FlexLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:orientation="horizontal">
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mBookDetailSource"
+            style="@style/Lightink.Button.Round"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="middle"
+            android:enabled="false"
+            android:singleLine="true"
+            android:text="@string/book_detail_none_source" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_weight="1"
+            android:background="@drawable/bg_card_round">
+
+            <cn.lightink.reader.widget.BoldTextView
+                android:id="@+id/mBookDetailRead"
+                style="@style/Lightink.Button.Round"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/book_detail_continue_read"
+                android:textColor="@color/color_read"
+                android:visibility="invisible" />
+
+            <ProgressBar
+                android:id="@+id/mBookDetailLoading"
+                style="@style/Ink.Loading"
+                android:layout_centerInParent="true"
+                android:indeterminateTint="@color/colorAccent"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

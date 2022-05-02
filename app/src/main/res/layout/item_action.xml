@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="6dp"
+    android:paddingBottom="@dimen/padding">
+
+    <ImageView
+        android:id="@+id/mActionIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/selected_background_menu"
+        android:contentDescription="@null"
+        android:scaleType="center"
+        android:src="@drawable/ic_reader_theme" />
+
+    <TextView
+        android:id="@+id/mActionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:includeFontPadding="false"
+        android:textSize="12sp"
+        tools:text="主题" />
+
+</LinearLayout>

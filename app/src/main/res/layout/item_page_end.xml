@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:padding="@dimen/padding_horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="168dp">
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mEndTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mEndAuthor"
+            android:layout_toStartOf="@id/mEndCover"
+            android:includeFontPadding="false"
+            android:textSize="20sp"
+            tools:text="挪威的森林" />
+
+        <TextView
+            android:id="@+id/mEndAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="2dp"
+            android:layout_toStartOf="@id/mEndCover"
+            android:includeFontPadding="false"
+            android:textSize="14sp"
+            tools:text="村上春树" />
+
+        <cn.lightink.reader.widget.ImageUriView
+            android:id="@+id/mEndCover"
+            android:layout_width="115dp"
+            android:layout_height="168dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/margin"
+            android:scaleType="centerCrop" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/mEndCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:includeFontPadding="false"
+        tools:text="累计阅读238分钟 ｜ 平均283字/分钟" />
+
+    <TextView
+        android:id="@+id/mEndChapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:includeFontPadding="false"
+        tools:text="共27章 ｜ 已读27章" />
+
+    <TextView
+        android:id="@+id/mEndStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/bg_card_round"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:padding="12dp"
+        android:textSize="15sp"
+        tools:text="未完待续" />
+
+</LinearLayout>

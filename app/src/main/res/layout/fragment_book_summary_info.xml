@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.lightink.reader.widget.FlexLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.Flexible"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/padding_horizontal"
+                android:paddingTop="@dimen/padding"
+                android:paddingEnd="@dimen/padding_horizontal"
+                android:paddingBottom="@dimen/padding">
+
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="112dp">
+
+                    <cn.lightink.reader.widget.ImageUriView
+                        android:id="@+id/mBookSummaryCover"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:background="@color/colorRedBackground" />
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/selected_foreground_round"
+                        android:backgroundTint="@color/colorBackground"
+                        android:contentDescription="@null"
+                        android:elevation="1dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_book_summary_settings" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/book_summary_name"
+                        android:textColor="@color/colorContent"
+                        android:textSize="12sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/mBookSummaryName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:imeOptions="actionDone"
+                        android:maxLines="1"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorTitle"
+                        android:textCursorDrawable="@drawable/ic_input_cursor"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:id="@+id/mBookSummaryNameLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimenInputLine"
+                        android:background="@color/colorStroke" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_vertical"
+                        android:text="@string/book_summary_author"
+                        android:textColor="@color/colorContent"
+                        android:textSize="12sp" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/mBookSummaryAuthor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:imeOptions="actionDone"
+                        android:maxLines="1"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorTitle"
+                        android:textCursorDrawable="@drawable/ic_input_cursor"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:id="@+id/mBookSummaryAuthorLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimenInputLine"
+                        android:background="@color/colorStroke" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:paddingStart="@dimen/padding_horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="@dimen/padding_horizontal"
+                    android:paddingBottom="10dp"
+                    android:text="@string/book_summary_status_finished"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="14sp" />
+
+                <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/mBookSummaryStatus"
+                    style="@style/Ink.Switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_horizontal" />
+
+            </LinearLayout>
+
+            <cn.lightink.reader.widget.JustifyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_horizontal"
+                android:layout_marginEnd="@dimen/margin_horizontal"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/book_summary_status"
+                android:textColor="@color/colorContent"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimenStroke"
+                android:layout_margin="@dimen/margin_horizontal"
+                android:background="@color/colorStroke" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_horizontal"
+                android:text="@string/book_summary_chapter"
+                android:textColor="@color/colorContent"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/mBookSummaryChapter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_horizontal"
+                android:layout_marginTop="@dimen/margin_vertical"
+                android:layout_marginEnd="@dimen/margin_horizontal"
+                android:layout_marginBottom="@dimen/margin_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="14sp"
+                tools:text="第一章" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_horizontal"
+                android:layout_marginTop="12dp"
+                android:text="@string/book_summary_statistics"
+                android:textColor="@color/colorContent"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/mBookSummaryStatistics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_horizontal"
+                android:layout_marginTop="@dimen/margin_vertical"
+                android:layout_marginEnd="@dimen/margin_horizontal"
+                android:textColor="@color/colorTitle"
+                android:textSize="14sp"
+                tools:text="累计阅读270分钟，平均527字每分钟" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimenStroke"
+                android:layout_margin="@dimen/margin_horizontal"
+                android:background="@color/colorStroke" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</cn.lightink.reader.widget.FlexLayout>

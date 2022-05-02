@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/discover_setting" />
+
+    <cn.lightink.reader.widget.FlexLayout
+        style="@style/AppTheme.Flexible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/Lightink.Item"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/padding_horizontal"
+                        android:paddingEnd="@dimen/padding_horizontal"
+                        android:text="@string/check_update" />
+
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/mBookCheckUpdateGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="14dp"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="42dp"
+                            android:padding="0dp"
+                            android:text="@string/check_update_time_no"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="12sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="15dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="42dp"
+                            android:padding="0dp"
+                            android:text="@string/check_update_time_30"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="12sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="15dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="42dp"
+                            android:padding="0dp"
+                            android:text="@string/check_update_time_60"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="12sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="15dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                </LinearLayout>
+
+                <cn.lightink.reader.widget.JustifyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:lineSpacingMultiplier="1.2"
+                    android:paddingStart="@dimen/padding_horizontal"
+                    android:paddingEnd="@dimen/padding"
+                    android:paddingBottom="@dimen/padding_vertical"
+                    android:text="@string/check_update_summary"
+                    android:textColor="@color/colorContent"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:background="@color/colorStroke" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selected_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/Lightink.Item"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/setting_font_size" />
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/mSettingFontSize"
+                        style="@style/Ink.Switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/margin" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:background="@color/colorStroke" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selected_background"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selected_background"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Lightink.Item"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/setting_follow_system" />
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/mSettingFollowSystem"
+                            style="@style/Ink.Switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="@dimen/margin" />
+                    </LinearLayout>
+
+                    <cn.lightink.reader.widget.JustifyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_horizontal"
+                        android:layout_marginEnd="@dimen/margin_horizontal"
+                        android:layout_marginBottom="@dimen/margin_vertical"
+                        android:gravity="center_vertical"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="@string/setting_follow_system_help"
+                        android:textColor="@color/colorContent"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:background="@color/colorStroke" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selected_background"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Lightink.Item"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="@dimen/padding_horizontal"
+                            android:paddingEnd="@dimen/padding_horizontal"
+                            android:text="@string/chase_update" />
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/mSettingChaseUpdate"
+                            style="@style/Ink.Switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="@dimen/margin" />
+                    </LinearLayout>
+
+                    <cn.lightink.reader.widget.JustifyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/padding_horizontal"
+                        android:layout_marginEnd="@dimen/padding_horizontal"
+                        android:layout_marginBottom="@dimen/padding_vertical"
+                        android:gravity="center_vertical"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="@string/chase_update_help"
+                        android:textColor="@color/colorContent"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:background="@color/colorStroke" />
+
+                <TextView
+                    android:id="@+id/mDiscoverAirPlay"
+                    style="@style/Lightink.Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selected_background"
+                    android:text="@string/discover_air_play" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:background="@color/colorStroke" />
+
+                <TextView
+                    android:id="@+id/mSettingMemory"
+                    style="@style/Lightink.Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selected_background"
+                    android:text="@string/setting_memory" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:background="@color/colorStroke" />
+                <TextView
+                    android:id="@+id/mSettingHelp"
+                    style="@style/Lightink.Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selected_background"
+                    android:text="@string/setting_help" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:background="@color/colorStroke" />
+
+                <TextView
+                    android:id="@+id/mSettingOpenSource"
+                    style="@style/Lightink.Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selected_background"
+                    android:text="@string/setting_open_source" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </cn.lightink.reader.widget.FlexLayout>
+
+</LinearLayout>

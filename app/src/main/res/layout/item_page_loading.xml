@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/mLoadingBar"
+        style="?android:progressBarStyleHorizontal"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mLoadingTitle"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:indeterminate="true" />
+
+    <TextView
+        android:id="@+id/mLoadingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/margin_medium"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:lineSpacingMultiplier="1.5"
+        android:textSize="15sp"
+        tools:text="第一章" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_card_view"
+        android:drawableStart="@drawable/waiting_moment"
+        android:drawablePadding="@dimen/dimen2x"
+        android:includeFontPadding="false"
+        android:lineSpacingMultiplier="1.2"
+        android:padding="@dimen/dimen2v"
+        android:text="@string/help_read_loading"
+        android:textSize="14sp"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+</RelativeLayout>

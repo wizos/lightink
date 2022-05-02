@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    color: %content%;
+    max-width: 100% !important;
+    font-family: %font% !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    padding: 0 12px 12px;
+    font-size: %font-size-normal%px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+    font-size: %font-size-big%px !important;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+h2, h3, h4 {
+    font-size: %font-size-normal%px !important;
+    font-weight: bold;
+    margin: 32px 0 16px;
+}
+
+a {
+    text-decoration: none;
+    color: %content%;
+    word-wrap:break-word;
+}
+
+a > u {
+    text-decoration: none
+}
+
+blockquote {
+    font-size: %font-size-small%px !important;
+    background-color: %foreground%;
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin: 16px 0px;
+    line-height: 1.4;
+}
+
+blockquote > p {
+    font-size: %font-size-small%px !important;
+    display: contents;
+}
+
+p, span {
+    font-size: %font-size-normal%px !important;
+    text-indent: 0em !important;
+}
+
+em {
+    font-size: %font-size-small%px;
+    color: %secondary%;
+}
+
+figure {
+    text-align: center;
+    max-width: 100% !important;
+    height: auto;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+figure > img {
+    margin: 0;
+}
+
+div {
+    height: auto;
+}
+
+img {
+    max-width: 100% !important;
+    height: auto !important;
+    text-align: center;
+    margin: 8px 0;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: 8px 0;
+}
+
+figcaption {
+    font-size: %font-size-small%px;
+    color: %secondary%;
+    margin-top: 8px;
+}
+
+ul {
+    list-style-type: square;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+li:last-of-type {
+    margin-bottom: 0;
+}
+
+audio {
+    width: 100%;
+}
+
+pre {
+     font-size: %font-size-small%px !important;
+     text-align: justify;
+     background-color: %foreground%;
+     border-radius: 4px;
+     padding: 4px 16px;
+     margin: 8px 0px;
+     line-height: 1.4;
+     white-space: pre-wrap;
+     word-wrap: break-word;
+ }
+
+.title {
+    font-size: %font-size-big%px !important;
+    font-weight: normal;
+    margin: 0 0;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+.author {
+    font-size: %font-size-small%px !important;
+    color: %secondary%;
+}
+
+.author > span {
+    font-size: %font-size-small%px !important;
+    color: %secondary%;
+}

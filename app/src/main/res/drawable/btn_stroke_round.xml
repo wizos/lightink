@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/btn_stroke_disable_round" android:state_enabled="false" />
+    <item android:drawable="@drawable/btn_stroke_enable_round" />
+</selector>

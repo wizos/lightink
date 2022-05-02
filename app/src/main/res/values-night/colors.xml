@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 基础 -->
+    <color name="colorBackground">#000000</color>
+    <color name="colorForeground">#101010</color>
+    <color name="colorAccent">#266bfd</color>
+
+    <!-- 内容 -->
+    <color name="colorTitle">#D1D1D1</color>
+    <color name="colorContent">#656565</color>
+    <color name="colorNormal">#565656</color>
+    <color name="colorRipple">#3A3A3A</color>
+    <color name="colorStroke">#101010</color>
+
+    <!-- 标签 -->
+    <color name="colorRedBackground">#101010</color>
+    <color name="colorRed">#959595</color>
+    <color name="colorBlueBackground">#101010</color>
+    <color name="colorGreen">#959595</color>
+
+
+</resources>

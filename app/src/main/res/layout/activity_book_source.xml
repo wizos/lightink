@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:id="@+id/mTopbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/my_book_source"
+        app:menu="@menu/add"
+        app:progressEnabled="true" />
+
+    <TextView
+        android:id="@+id/mBookSourceNone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawableTop="@drawable/ic_none"
+        android:gravity="center"
+        android:paddingBottom="32dp"
+        android:text="@string/booksource_none"
+        android:textColor="@color/colorStroke"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+    <cn.lightink.reader.widget.FlexLayout
+        style="@style/AppTheme.Flexible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mTopbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mBookSourceRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+
+    </cn.lightink.reader.widget.FlexLayout>
+
+</RelativeLayout>

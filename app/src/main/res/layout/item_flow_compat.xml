@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_background"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/padding_horizontal"
+    android:paddingTop="12dp"
+    android:paddingEnd="@dimen/padding_horizontal"
+    android:paddingBottom="12dp">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/mFlowTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/colorTitle"
+            android:textSize="16sp"
+            tools:text="简单几步设置，让 Windows 更新不再自动重启" />
+
+        <TextView
+            android:id="@+id/mFlowSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mFlowTitle"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorNormal"
+            android:textSize="12sp"
+            tools:text="少数派 昨天" />
+
+    </RelativeLayout>
+
+    <cn.lightink.reader.widget.ImageUriView
+        android:id="@+id/mFlowCover"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:adjustViewBounds="true"
+        android:minHeight="68dp"
+        tools:background="@drawable/selected_foreground" />
+
+</LinearLayout>

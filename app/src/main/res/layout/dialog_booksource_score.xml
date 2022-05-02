@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_horizontal"
+    android:background="@drawable/bg_dialog_round"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.BoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:gravity="center"
+        android:padding="@dimen/padding"
+        android:text="@string/score"
+        android:textColor="@color/colorTitle"
+        android:textSize="16sp" />
+
+    <RatingBar
+        android:id="@+id/mBookSourceScoreRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:layout_marginBottom="@dimen/margin_vertical"
+        android:isIndicator="false"
+        android:theme="@style/Lightink.Rating" />
+
+    <cn.lightink.reader.widget.BoldTextView
+        android:id="@+id/mBookSourceScoreSubmit"
+        style="@style/Lightink.Button.Round"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:enabled="false"
+        android:text="@string/submit"
+        android:textColor="@color/color_enable" />
+
+</LinearLayout>

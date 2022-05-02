@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 顶栏 -->
+    <style name="AppTheme.Topbar">
+        <item name="android:textColor">@color/colorTitle</item>
+        <item name="android:strokeColor">@color/colorStroke</item>
+    </style>
+
+    <!-- 弹性布局 -->
+    <style name="AppTheme.Flexible">
+        <item name="srlEnablePureScrollMode">true</item>
+    </style>
+
+    <style name="AppTheme.Popup">
+        <item name="android:windowEnterAnimation">@anim/popup_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_hide</item>
+    </style>
+
+    <!-- Bottom Sheet -->
+    <style name="AppTheme.BottomSheet" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+    </style>
+
+    <style name="bottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+</resources>

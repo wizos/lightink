@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding">
+
+    <TextView
+        android:id="@+id/mBookSourceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/mBookSourceUsed"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:textSize="15sp"
+        tools:text="My716" />
+
+    <TextView
+        android:id="@+id/mBookSourceChapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mBookSourceName"
+        android:layout_marginTop="2dp"
+        android:layout_toStartOf="@+id/mBookSourceUsed"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:textSize="12sp"
+        tools:text="第四部 第八十三章 复盘" />
+
+    <TextView
+        android:id="@+id/mBookSourceUsed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/margin"
+        android:background="@drawable/btn_stroke_round"
+        android:includeFontPadding="false"
+        android:paddingStart="16dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="6dp"
+        android:text="@string/change_source"
+        android:textColor="@color/color_enable"
+        android:textSize="12sp" />
+
+    <ProgressBar
+        android:id="@+id/mBookSourceLoading"
+        style="@style/Ink.Loading"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/dimen2v" />
+
+</RelativeLayout>

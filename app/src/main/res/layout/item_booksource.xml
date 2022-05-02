@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_background"
+    android:paddingStart="@dimen/padding_horizontal"
+    android:paddingTop="@dimen/padding"
+    android:paddingEnd="0dp"
+    android:paddingBottom="@dimen/padding">
+
+    <TextView
+        android:id="@+id/mBookSourceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorTitle"
+        android:textSize="15sp"
+        tools:text="有兔阅读" />
+
+    <TextView
+        android:id="@+id/mBookSourceAuth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@+id/mBookSourceName"
+        android:background="@drawable/bg_tag_stroke"
+        android:backgroundTint="@color/colorGrapefruit"
+        android:paddingStart="1.5dp"
+        android:paddingTop="0.3dp"
+        android:paddingEnd="1.5dp"
+        android:paddingBottom="0.5dp"
+        android:text="@string/booksource_auth"
+        android:textColor="@color/colorGrapefruit"
+        android:textSize="7sp"
+        android:visibility="gone"
+        tools:ignore="SmallSp"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/mBookSourceRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@+id/mBookSourceAuth"
+        android:background="@drawable/bg_tag_stroke"
+        android:backgroundTint="@color/colorGreen"
+        android:paddingStart="1.5dp"
+        android:paddingTop="0.3dp"
+        android:paddingEnd="1.5dp"
+        android:paddingBottom="0.5dp"
+        android:text="@string/booksource_rank"
+        android:textColor="@color/colorGreen"
+        android:textSize="7sp"
+        android:visibility="gone"
+        tools:ignore="SmallSp"
+        tools:visibility="visible" />
+
+    <RatingBar
+        android:id="@+id/mBookSourceScore"
+        style="@style/Lightink.Rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mBookSourceName"
+        android:layout_marginStart="-8dp"
+        android:layout_marginTop="2dp"
+        android:isIndicator="true"
+        android:scaleX="0.82"
+        android:scaleY="0.82"
+        tools:rating="4" />
+
+    <TextView
+        android:id="@+id/mBookSourceStatistics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mBookSourceName"
+        android:layout_alignBaseline="@+id/mBookSourceScore"
+        android:layout_marginTop="2dp"
+        android:layout_toStartOf="@+id/mBookSourceInstallLayout"
+        android:layout_toEndOf="@+id/mBookSourceScore"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorNormal"
+        android:textSize="11.5sp"
+        tools:ignore="SmallSp"
+        tools:text="0次安装" />
+
+    <TextView
+        android:id="@+id/mBookSourceOwner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mBookSourceScore"
+        android:layout_toStartOf="@+id/mBookSourceInstallLayout"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorContent"
+        android:textSize="12.5sp"
+        tools:text="chimisgo - app.youzibank.com" />
+
+    <RelativeLayout
+        android:id="@+id/mBookSourceInstallLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:paddingStart="@dimen/padding_horizontal"
+        android:paddingTop="@dimen/padding_vertical"
+        android:paddingEnd="@dimen/padding_horizontal"
+        android:paddingBottom="@dimen/padding_vertical">
+
+        <TextView
+            android:id="@+id/mBookSourceInstall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_stroke_disable_round"
+            android:paddingStart="16dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="4dp"
+            android:text="@string/uninstall"
+            android:textColor="@color/colorContent"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_sort_descending"
+        android:enabled="false"
+        android:icon="@drawable/ic_sort_descending"
+        android:title=""
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_sort_ascending"
+        android:icon="@drawable/ic_sort_ascending"
+        android:title=""
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+</menu>

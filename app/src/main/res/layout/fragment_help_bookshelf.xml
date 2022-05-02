@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText,SmallSp">
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="340dp"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/help1" />
+
+    <cn.lightink.reader.widget.BoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.1"
+        android:text="支持导入书源读取在线图书"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/mHelpBookSource"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:background="@drawable/selected_foreground"
+        android:backgroundTint="@color/colorTitle"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="查看我的书源"
+        android:textColor="@color/colorBackground"
+        android:textSize="12sp" />
+
+
+</LinearLayout>

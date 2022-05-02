@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:id="@+id/mTopbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topbarDefaultSize"
+        tools:text="🍉🍉🍉" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mBookManagerRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimenStroke"
+        android:background="@color/colorStroke" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/mBookManagerMove"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selected_background"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_menu_move"
+                android:drawablePadding="@dimen/padding_vertical"
+                android:gravity="center"
+                android:padding="@dimen/padding"
+                android:text="@string/menu_move_bookshelf"
+                android:textColor="@color/colorTitle" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mBookManagerDelete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selected_background"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_menu_delete"
+                android:drawablePadding="@dimen/padding_vertical"
+                android:gravity="center"
+                android:padding="@dimen/padding"
+                android:text="@string/menu_delete_book"
+                android:textColor="@color/colorTitle" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

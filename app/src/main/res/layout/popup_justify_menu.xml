@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/justify_card"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_margin="@dimen/dimen1x"
+        app:cardElevation="@dimen/dimen0x">
+
+        <LinearLayout
+            android:id="@+id/justify_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp">
+
+            <TextView
+                android:id="@+id/justify_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/selected_background"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/dimen1v"
+                android:paddingEnd="@dimen/dimen1v"
+                android:text="@string/copy"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/justify_bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/selected_background"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/dimen1v"
+                android:paddingEnd="@dimen/dimen1v"
+                android:text="@string/bookmark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/justify_purify"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/selected_background"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/dimen1v"
+                android:paddingEnd="@dimen/dimen1v"
+                android:text="@string/purify"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

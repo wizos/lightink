@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topbarDefaultSize"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:maxLength="12"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:text="@string/bookshelf_dashboard"
+            android:textColor="@color/colorTitle"
+            android:textSize="18sp" />
+
+        <cn.lightink.reader.widget.ImageUriView
+            android:id="@+id/mDashboardCreate"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/selected_background_borderless_none"
+            android:contentDescription="@string/create"
+            android:scaleType="center"
+            android:src="@drawable/ic_action_create" />
+
+    </RelativeLayout>
+
+    <cn.lightink.reader.widget.FlexLayout
+        style="@style/AppTheme.Flexible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mDashboardRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+    </cn.lightink.reader.widget.FlexLayout>
+
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="dimen1">1dp</dimen>
+
+    <!-- 外边距 -->
+    <dimen name="margin">16dp</dimen>
+    <dimen name="margin_vertical">8dp</dimen>
+    <dimen name="margin_horizontal">20dp</dimen>
+    <!-- 内边距 -->
+    <dimen name="padding">16dp</dimen>
+    <dimen name="padding_vertical">8dp</dimen>
+    <dimen name="padding_horizontal">20dp</dimen>
+    <dimen name="padding_horizontal_half">10dp</dimen>
+
+    <!-- 外边距 -->
+    <dimen name="margin_small">6dp</dimen>
+    <dimen name="margin_medium">12dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+
+    <!-- 内边距 -->
+    <dimen name="padding_tiny">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+
+    <!-- base 10+v -->
+    <dimen name="dimen1v">10dp</dimen>
+    <dimen name="dimen2v">20dp</dimen>
+
+    <!-- base 8+x -->
+    <dimen name="dimen0x">4dp</dimen>
+    <dimen name="dimen1x">8dp</dimen>
+    <dimen name="dimen2x">16dp</dimen>
+    <dimen name="dimen3x">24dp</dimen>
+    <dimen name="dimen4x">32dp</dimen>
+    <dimen name="dimen6x">48dp</dimen>
+    <dimen name="dimen8x">64dp</dimen>
+
+    <dimen name="dimenLx">12dp</dimen>
+
+    <!-- 书架 -->
+    <dimen name="dimenBookshelfCoverSize">96dp</dimen>
+
+    <!-- 边框 -->
+    <dimen name="dimenStroke">0.4dp</dimen>
+    <dimen name="dimenButtonStroke">0.8dp</dimen>
+    <dimen name="dimenInputLine">0.8dp</dimen>
+
+    <!-- 按钮 -->
+    <dimen name="dimenDefaultButtonHeight">30dp</dimen>
+
+    <!-- 进度条 -->
+    <dimen name="dimenDefaultProgressSize">22dp</dimen>
+
+    <!-- 圆角 -->
+    <dimen name="dimenDefaultRadiusSize">4dp</dimen>
+
+    <!-- Topbar -->
+    <dimen name="topbarDefaultSize">56dp</dimen>
+
+    <!-- 阅读 -->
+    <dimen name="sp">1sp</dimen>
+    <dimen name="dp">1dp</dimen>
+    <dimen name="dimenReaderBoundary">16dp</dimen>
+    <dimen name="dimenReaderItemHeight">52dp</dimen>
+
+    <!-- 导航栏图标默认尺寸 -->
+
+</resources>

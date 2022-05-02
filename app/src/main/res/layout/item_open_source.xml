@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_background"
+    android:padding="@dimen/dimen2x">
+
+    <cn.lightink.reader.widget.BoldTextView
+        android:id="@+id/mOpenSourceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorTitle"
+        android:textSize="16sp"
+        tools:text="square/okhttp" />
+
+    <TextView
+        android:id="@+id/mOpenSourceLicense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mOpenSourceName"
+        android:layout_marginTop="@dimen/dimen2x"
+        android:textColor="@color/colorContent"
+        android:textSize="12sp"
+        tools:text="Licensed under the Apache License, Version 2.0 (the License)" />
+
+</RelativeLayout>

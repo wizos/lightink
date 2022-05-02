@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:icon="@drawable/ic_shortcuts_read"
+        android:shortcutId="read"
+        android:shortcutShortLabel="@string/shortcut_read">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="lightink://continue"
+            android:targetClass="cn.lightink.reader.ui.main.MainActivity"
+            android:targetPackage="cn.lightink.reader" />
+    </shortcut>
+
+</shortcuts>

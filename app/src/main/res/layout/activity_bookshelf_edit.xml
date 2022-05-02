@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:id="@+id/mTopbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bookshelf_edit" />
+
+    <cn.lightink.reader.widget.FlexLayout
+        style="@style/AppTheme.Flexible"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginTop="@dimen/margin_horizontal"
+                    android:layout_marginEnd="@dimen/margin_horizontal"
+                    android:layout_marginBottom="@dimen/margin_horizontal"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="1dp"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/mBookshelfNameInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/bookshelf_wait_input"
+                        android:imeOptions="actionDone"
+                        android:inputType="textUri"
+                        android:maxLength="12"
+                        android:maxLines="1"
+                        android:selectAllOnFocus="false"
+                        android:singleLine="true"
+                        android:textColor="@color/colorTitle"
+                        android:textCursorDrawable="@drawable/ic_input_cursor"
+                        android:textSize="15sp">
+
+                        <requestFocus />
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin_horizontal"
+                    android:gravity="center_vertical">
+
+                    <cn.lightink.reader.widget.BoldTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/preferred"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/mBookshelfPreferredGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="48dp"
+                            android:padding="0dp"
+                            android:text="@string/bookshelf_preferred_close"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="14sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="18dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="48dp"
+                            android:padding="0dp"
+                            android:text="@string/bookshelf_preferred_open"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="14sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="18dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                </LinearLayout>
+
+                <cn.lightink.reader.widget.JustifyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin_horizontal"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/bookshelf_preferred_tips"
+                    android:textColor="@color/colorContent"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_margin="@dimen/margin_horizontal"
+                    android:background="@color/colorStroke" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginEnd="@dimen/margin_horizontal"
+                    android:gravity="center_vertical">
+
+                    <cn.lightink.reader.widget.BoldTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/bookshelf_layout"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/mBookshelfLayoutGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="48dp"
+                            android:padding="0dp"
+                            android:text="@string/bookshelf_layout_grid"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="14sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="18dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="48dp"
+                            android:padding="0dp"
+                            android:text="@string/bookshelf_layout_list"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="14sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="18dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_margin="@dimen/dimen2v"
+                    android:background="@color/colorStroke" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginEnd="@dimen/margin_horizontal"
+                    android:gravity="center_vertical">
+
+                    <cn.lightink.reader.widget.BoldTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/bookshelf_info"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/mBookshelfInfoGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="48dp"
+                            android:padding="0dp"
+                            android:text="@string/bookshelf_info_brief"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="14sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="18dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="48dp"
+                            android:padding="0dp"
+                            android:text="@string/bookshelf_info_full"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="14sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="18dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                </LinearLayout>
+
+                <cn.lightink.reader.widget.JustifyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin_horizontal"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/bookshelf_info_tips"
+                    android:textColor="@color/colorContent"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_margin="@dimen/margin_horizontal"
+                    android:background="@color/colorStroke" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginEnd="@dimen/margin_horizontal"
+                    android:gravity="center_vertical">
+
+                    <cn.lightink.reader.widget.BoldTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/bookshelf_sort"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/mBookshelfSortGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="48dp"
+                            android:padding="0dp"
+                            android:text="@string/bookshelf_sort_time"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="14sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="18dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="64dp"
+                            android:layout_height="48dp"
+                            android:padding="0dp"
+                            android:text="@string/bookshelf_sort_drag"
+                            android:textColor="@color/color_toggle_text"
+                            android:textSize="14sp"
+                            app:backgroundTint="@color/color_toggle"
+                            app:cornerRadius="18dp"
+                            app:strokeColor="@color/colorBlueBackground"
+                            app:strokeWidth="@dimen/dimenButtonStroke" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                </LinearLayout>
+
+                <cn.lightink.reader.widget.JustifyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin_horizontal"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/bookshelf_sort_tips"
+                    android:textColor="@color/colorContent"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </cn.lightink.reader.widget.FlexLayout>
+
+    <cn.lightink.reader.widget.BoldTextView
+        android:id="@+id/mBookshelfSave"
+        style="@style/Lightink.Button.Round"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:text="@string/save"
+        android:textColor="@color/colorAccent" />
+
+</LinearLayout>

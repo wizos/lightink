@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:id="@+id/mTopbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        app:menu="@menu/more">
+
+        <cn.lightink.reader.widget.StateImageView
+            android:id="@+id/mFlowLoved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="52dp"
+            android:background="@drawable/selected_background_borderless_action"
+            android:padding="@dimen/padding_vertical"
+            android:src="@drawable/ic_check_love_box" />
+
+    </cn.lightink.reader.widget.TopbarView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <cn.lightink.reader.widget.FlexLayout
+            style="@style/AppTheme.Flexible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <WebView
+                android:id="@+id/mWebView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </cn.lightink.reader.widget.FlexLayout>
+
+        <ProgressBar
+            android:id="@+id/mLoadingBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-7dp"
+            android:indeterminate="true"
+            android:scaleY="0.7" />
+
+    </RelativeLayout>
+
+</LinearLayout>
