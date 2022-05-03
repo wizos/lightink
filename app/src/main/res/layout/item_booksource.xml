@@ -57,40 +57,12 @@
         tools:ignore="SmallSp"
         tools:visibility="visible" />
 
-    <RatingBar
-        android:id="@+id/mBookSourceScore"
-        style="@style/Lightink.Rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/mBookSourceName"
-        android:layout_marginStart="-8dp"
-        android:layout_marginTop="2dp"
-        android:isIndicator="true"
-        android:scaleX="0.82"
-        android:scaleY="0.82"
-        tools:rating="4" />
-
-    <TextView
-        android:id="@+id/mBookSourceStatistics"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/mBookSourceName"
-        android:layout_alignBaseline="@+id/mBookSourceScore"
-        android:layout_marginTop="2dp"
-        android:layout_toStartOf="@+id/mBookSourceInstallLayout"
-        android:layout_toEndOf="@+id/mBookSourceScore"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@color/colorNormal"
-        android:textSize="11.5sp"
-        tools:ignore="SmallSp"
-        tools:text="0次安装" />
-
     <TextView
         android:id="@+id/mBookSourceOwner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mBookSourceScore"
+        android:layout_below="@+id/mBookSourceName"
+        android:layout_marginTop="2dp"
         android:layout_toStartOf="@+id/mBookSourceInstallLayout"
         android:ellipsize="end"
         android:maxLines="1"

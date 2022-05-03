@@ -70,11 +70,7 @@ class BookSourceActivity : LifecycleActivity() {
         if (bookSource == null) return@PageListAdapter
         item.view.mBookSourceAuth.isVisible = false
         item.view.mBookSourceRank.isVisible = bookSource.rank
-        item.view.mBookSourceScore.isVisible = bookSource.id > 0
-        item.view.mBookSourceStatistics.isVisible = bookSource.id > 0
         item.view.mBookSourceName.text = bookSource.name
-        item.view.mBookSourceScore.rating = bookSource.score
-        item.view.mBookSourceStatistics.text = getString(R.string.booksource_frequency, bookSource.frequency)
         item.view.mBookSourceOwner.text = bookSource.author
         if (bookSource.account) {
             controller.verify(bookSource).observe(this, Observer { verify ->
