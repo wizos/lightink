@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/mAuthTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:textSize="28sp"
+        tools:text="标题" />
+
+    <LinearLayout
+        android:id="@+id/mAuthMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_view"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/mAuthTips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingStart="@dimen/dimen2x"
+            android:paddingTop="@dimen/dimen2x"
+            android:paddingEnd="@dimen/dimen2x"
+            android:text="@string/reader_auth_tips"
+            android:textSize="14sp" />
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mAuthLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selected_background"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:padding="@dimen/dimen2v"
+            android:text="@string/reader_auth_login"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

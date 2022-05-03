@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mFeedGroupName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_background"
+    android:drawableStart="@drawable/ic_checkbox_blank"
+    android:drawablePadding="@dimen/padding"
+    android:gravity="center_vertical"
+    android:paddingStart="@dimen/padding"
+    android:paddingTop="12dp"
+    android:paddingEnd="@dimen/padding"
+    android:paddingBottom="12dp"
+    android:textColor="@color/colorTitle"
+    android:textSize="15sp"
+    tools:text="@string/feed_group_create_by_self" />

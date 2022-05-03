@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="booksource_verify">验证网络书源</string>
+    <string name="booksource_verify_success">验证完成</string>
+    <string name="booksource_repository">书源仓库网址</string>
+    <string name="booksource_search_none">已安装的书源搜索无结果</string>
+    <string name="booksource_frequency">%d次使用</string>
+
+    <string name="booksource_import">网址导入</string>
+
+</resources>

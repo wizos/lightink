@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bookshelf_delete_content">删除「%s」书架及书架中的全部图书</string>
+    <string name="bookshelf_not_delete_all">不能删除全部书架</string>
+    <string name="bookshelf_already_delete">书架已删除</string>
+
+    <string name="bookshelf_dashboard">书架列表</string>
+    <string name="book_select_count">选中 %d 项</string>
+</resources>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topbarDefaultSize"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mBookshelfName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:maxLength="12"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:textColor="@color/colorTitle"
+            android:textSize="18sp"
+            tools:ignore="RelativeOverlap"
+            tools:text="正在阅读" />
+
+        <ImageButton
+            android:id="@+id/mBookshelfSearch"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@+id/mBookshelfAccount"
+            android:background="@drawable/selected_background_borderless_none"
+            android:contentDescription="@string/search"
+            android:src="@drawable/ic_action_search" />
+
+        <cn.lightink.reader.widget.ImageUriView
+            android:id="@+id/mBookshelfAccount"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selected_background_borderless_none"
+            android:contentDescription="@string/search"
+            android:scaleType="center"
+            android:src="@drawable/ic_action_user_logon"
+            tools:layout_marginEnd="@dimen/margin" />
+
+    </RelativeLayout>
+
+    <cn.bingoogolapple.bgabanner.BGABanner
+        android:id="@+id/mBookshelfBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin"
+        android:visibility="gone"
+        app:banner_indicatorGravity="bottom|right"
+        app:banner_pointAutoPlayInterval="8000"
+        app:banner_pointContainerBackground="@android:color/transparent"
+        app:banner_pointDrawable="@drawable/drawable_banner_point"
+        app:banner_pointTopBottomMargin="9.5dp"
+        app:banner_transitionEffect="alpha" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <cn.lightink.reader.widget.FlexLayout
+            android:id="@+id/mBookshelfFlexibleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBlueBackground">
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:background="@drawable/bg_refresh_header"
+                app:srlAccentColor="@color/colorTitle"
+                app:srlTextPulling="下拉刷新"
+                app:srlTextRelease="释放刷新"
+                app:srlDrawableArrow="@drawable/ic_refresh_header_arrow" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mBookshelfRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorBackground"
+                android:clipToPadding="false"
+                android:overScrollMode="never" />
+
+        </cn.lightink.reader.widget.FlexLayout>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+</LinearLayout>

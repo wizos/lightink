@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/mBookRankTouch"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:paddingStart="@dimen/padding_horizontal"
+        android:paddingEnd="@dimen/padding_horizontal"
+        android:scaleType="center"
+        android:src="@drawable/ic_book_rank_touch" />
+
+    <TextView
+        android:id="@+id/mBookRankTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingTop="@dimen/padding_horizontal"
+        android:paddingBottom="@dimen/padding_horizontal"
+        android:singleLine="true"
+        android:textColor="@color/colorTitle"
+        android:textSize="15sp"
+        tools:text="起点中文网" />
+
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/mBookRankVisible"
+        style="@style/Ink.Switch"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/padding_horizontal"
+        android:paddingEnd="@dimen/padding_horizontal" />
+
+</LinearLayout>

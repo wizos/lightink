@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TopbarView">
+        <attr name="android:text"/>
+        <attr name="android:background"/>
+        <attr name="android:textColor"/>
+        <attr name="android:strokeColor"/>
+        <attr name="menu" format="reference"/>
+        <attr name="navigationEnabled" format="boolean"/>
+        <attr name="lineEnabled" format="boolean"/>
+        <attr name="progressEnabled" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="StateImageView">
+        <attr name="android:checked"/>
+    </declare-styleable>
+
+    <declare-styleable name="Switch">
+        <attr name="checked" format="reference|boolean"/>
+        <attr name="switchOnColor" format="reference|color"/>
+        <attr name="switchOffColor" format="reference|color"/>
+        <attr name="spotOnColor" format="reference|color"/>
+        <attr name="spotOnColorIn" format="reference|color"/>
+        <attr name="spotOffColor" format="reference|color"/>
+        <attr name="spotOffColorIn" format="reference|color"/>
+        <attr name="switchOnStrokeColor" format="reference|color"/>
+        <attr name="switchOffStrokeColor" format="reference|color"/>
+        <attr name="spotPadding" format="reference|dimension"/>
+        <attr name="duration" format="reference|integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="JustifyView">
+        <attr name="android:text"/>
+    </declare-styleable>
+</resources>

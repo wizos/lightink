@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="48dp"
+    android:layout_marginEnd="48dp"
+    android:layout_marginBottom="48dp"
+    android:background="@drawable/bg_dialog_round"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.BoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_horizontal"
+        android:text="@string/notice"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/mSimpleContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/padding_horizontal"
+        android:textSize="14sp"
+        tools:text="配置需重启应用生效" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimenStroke"
+        android:background="@color/colorStroke" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/mSimpleCancel"
+            style="@style/Lightink.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selected_btn_sign"
+            android:padding="@dimen/padding"
+            android:text="@string/cancel"
+            android:textColor="@color/colorContent" />
+
+        <View
+            android:layout_width="@dimen/dimenStroke"
+            android:layout_height="match_parent"
+            android:background="@color/colorStroke" />
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mSimpleSubmit"
+            style="@style/Lightink.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selected_btn_sign"
+            android:padding="@dimen/padding"
+            android:text="@string/sure" />
+
+    </LinearLayout>
+
+</LinearLayout>

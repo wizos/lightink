@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <!--黑色背景颜色-->
+    <item android:drawable="@color/colorBackground" />
+    <!-- 产品logo-->
+    <item android:bottom="48dp">
+        <bitmap
+            android:gravity="bottom|center_horizontal"
+            android:src="@mipmap/favicon" />
+    </item>
+</layer-list>

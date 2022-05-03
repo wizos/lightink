@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="60dp"
+    android:layout_height="84dp"
+    android:layout_margin="@dimen/margin_vertical">
+
+    <cn.lightink.reader.widget.ImageUriView
+        android:id="@+id/mBookCover"
+        android:layout_width="60dp"
+        android:layout_height="84dp"
+        android:transitionName="@string/transition" />
+
+    <ImageView
+        android:id="@+id/mBookState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_book_state_update" />
+
+</RelativeLayout>

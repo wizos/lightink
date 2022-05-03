@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mThemeCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="0dp">
+
+    <RelativeLayout
+        android:id="@+id/mThemeBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <cn.lightink.reader.widget.ImageUriView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <View
+            android:id="@+id/mThemeForegroundLight"
+            android:layout_width="288dp"
+            android:layout_height="288dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:alpha="0.4"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/colorStroke" />
+
+        <View
+            android:id="@+id/mThemeForegroundDark"
+            android:layout_width="192dp"
+            android:layout_height="192dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/colorStroke" />
+
+        <ImageView
+            android:id="@+id/mThemeCheckStatus"
+            android:layout_width="@dimen/dimen3x"
+            android:layout_height="@dimen/dimen3x"
+            android:layout_margin="@dimen/dimen2x"
+            android:background="@drawable/bg_circle"
+            android:contentDescription="@null"
+            android:padding="@dimen/dimen0x" />
+
+        <ImageButton
+            android:id="@+id/mThemeMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="@dimen/dimen1x"
+            android:background="@drawable/selected_background_borderless"
+            android:contentDescription="@string/accessibility_more"
+            android:padding="@dimen/dimen0x"
+            android:src="@drawable/ic_more" />
+
+        <TextView
+            android:id="@+id/mThemeTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/dimen2x"
+            android:layout_marginEnd="@dimen/dimen2x"
+            android:layout_marginBottom="@dimen/dimen2x"
+            android:textSize="12sp"
+            tools:text="累计使用2小时" />
+
+        <TextView
+            android:id="@+id/mThemeAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mThemeTime"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/dimen4x"
+            android:layout_marginEnd="@dimen/dimen2x"
+            android:layout_marginBottom="@dimen/dimen2x"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="11sp"
+            tools:ignore="SmallSp"
+            tools:text="轻墨" />
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mThemeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mThemeAuthor"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/dimen2x"
+            android:layout_marginEnd="@dimen/dimen2x"
+            android:layout_marginBottom="@dimen/dimen0x"
+            android:textSize="16sp"
+            tools:text="白昼" />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

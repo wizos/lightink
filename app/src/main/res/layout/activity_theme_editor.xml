@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/mThemeEditorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="#F4E9DE"
+        tools:ignore="HardcodedText"
+        tools:padding="@dimen/padding_horizontal">
+
+        <TextView
+            android:id="@+id/mThemeEditorChapter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="时间"
+            android:textSize="12sp" />
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mThemeEditorTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mThemeEditorChapter"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="48dp"
+            android:gravity="center"
+            android:text="主题指南"
+            android:textSize="28sp" />
+
+        <cn.lightink.reader.widget.JustifyView
+            android:id="@+id/mThemeEditorContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mThemeEditorChapterSchedule"
+            android:layout_below="@+id/mThemeEditorTitle"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/mThemeEditorChapterTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:includeFontPadding="false"
+            android:text="标题"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/mThemeEditorChapterSchedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/mThemeEditorChapterTime"
+            android:gravity="end"
+            android:includeFontPadding="false"
+            android:text="页码"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/mThemeMenuLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bottom_sheet"
+            android:elevation="8dp"
+            android:focusable="true"
+            android:orientation="vertical"
+            app:behavior_hideable="true"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mThemeEditorNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/selected_background"
+                android:hint="@string/theme_name_hint"
+                android:imeOptions="actionDone"
+                android:maxLength="12"
+                android:maxLines="1"
+                android:paddingStart="@dimen/margin_horizontal"
+                android:paddingEnd="128dp"
+                android:singleLine="true"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+            <cn.lightink.reader.widget.BoldTextView
+                android:id="@+id/mThemeEditorPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/selected_background"
+                android:gravity="center"
+                android:paddingStart="@dimen/padding_horizontal"
+                android:paddingEnd="@dimen/padding_horizontal"
+                android:text="@string/theme_pick_picture"
+                android:textSize="15sp"
+                tools:ignore="RelativeOverlap" />
+
+            <View
+                android:id="@+id/mThemeMenuTopLine"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimenStroke"
+                android:layout_below="@+id/mThemeEditorNameInput"
+                android:alpha="0.1" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mThemeMenuRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mThemeMenuTopLine"
+                android:paddingTop="16dp"
+                android:paddingBottom="@dimen/padding" />
+
+            <View
+                android:id="@+id/mThemeMenuBottomLine"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimenStroke"
+                android:layout_below="@+id/mThemeMenuRecycler"
+                android:alpha="0.1" />
+
+            <cn.lightink.reader.widget.BoldTextView
+                android:id="@+id/mThemeEditorSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/topbarDefaultSize"
+                android:layout_below="@+id/mThemeMenuBottomLine"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/selected_background"
+                android:gravity="center"
+                android:paddingStart="@dimen/padding_horizontal"
+                android:paddingEnd="@dimen/padding_horizontal"
+                android:text="@string/theme_complete"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

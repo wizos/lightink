@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:text="@string/feed_verify">
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mFeedVerifySubmit"
+            style="@style/Lightink.Topbar.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_action_send"
+            android:gravity="center"
+            android:text="@string/verify"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/mFeedVerifyProgressBar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/margin"
+            android:indeterminateTint="@color/colorRed"
+            android:scaleX="0.85"
+            android:scaleY="0.85"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </cn.lightink.reader.widget.TopbarView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/bg_card_round">
+
+        <cn.lightink.reader.widget.ImeEditText
+            android:id="@+id/mFeedVerifyInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:hint="@string/feed_verify_hint"
+            android:imeOptions="actionGo"
+            android:inputType="textUri"
+            android:paddingStart="16dp"
+            android:paddingEnd="32dp"
+            android:singleLine="true"
+            android:textColor="@color/colorTitle"
+            android:textColorHint="@color/colorContent"
+            android:textCursorDrawable="@drawable/ic_input_cursor">
+
+            <requestFocus />
+        </cn.lightink.reader.widget.ImeEditText>
+
+        <ImageView
+            android:id="@+id/mFeedVerifyClear"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/selected_background_borderless"
+            android:contentDescription="@string/accessibility_search_clear"
+            android:scaleType="center"
+            android:src="@drawable/ic_tips_close"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/mFeedInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mFeedName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_horizontal"
+            android:paddingEnd="@dimen/padding_horizontal"
+            android:textColor="@color/colorTitle"
+            android:textSize="20sp"
+            tools:text="少数派" />
+
+        <TextView
+            android:id="@+id/mFeedSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:lineSpacingMultiplier="1.1"
+            android:paddingStart="@dimen/padding_horizontal"
+            android:paddingEnd="@dimen/padding_horizontal"
+            android:textColor="@color/colorContent"
+            android:textSize="13sp"
+            tools:text="少数派致力于更好地运用数字产品或科学方法，帮助用户提升工作效率和生活品质" />
+
+        <cn.lightink.reader.widget.FlexLayout
+            style="@style/AppTheme.Flexible"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_vertical"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mFeedVerifyRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </cn.lightink.reader.widget.FlexLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:orientation="horizontal">
+
+            <cn.lightink.reader.widget.BoldTextView
+                android:id="@+id/mFeedVerifyCancel"
+                style="@style/Lightink.Button.Round"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_weight="1"
+                android:text="@string/cancel"
+                android:textColor="@color/colorRed" />
+
+            <cn.lightink.reader.widget.BoldTextView
+                android:id="@+id/mFeedVerifySubscribe"
+                style="@style/Lightink.Button.Round"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/feed_subscribe"
+                android:textColor="@color/colorBackground" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:id="@+id/mTopbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/booksource_verify" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mBookSourceVerifyTextFieldLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mTopbar"
+        android:layout_margin="@dimen/margin_horizontal"
+        app:boxStrokeColor="@color/colorAccent"
+        app:boxStrokeErrorColor="@color/colorRed"
+        app:errorIconTint="@color/colorRed"
+        app:errorTextColor="@color/colorRed"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:hintTextColor="@color/colorAccent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mBookSourceVerifyTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/booksource_repository"
+            android:imeOptions="actionSend"
+            android:inputType="textUri"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/colorTitle"
+            android:textCursorDrawable="@drawable/ic_input_cursor">
+
+            <requestFocus />
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/mBookSourceVerifyLoading"
+        style="@style/SpinKitView.FadingCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/colorAccent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mBookSourceVerifyButton"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_horizontal"
+        android:enabled="false"
+        android:text="@string/verify"
+        app:backgroundTint="@color/color_enable" />
+
+</RelativeLayout>

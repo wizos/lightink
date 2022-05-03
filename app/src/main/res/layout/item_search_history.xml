@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mSearchHistoryKey"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_background"
+    android:drawableStart="@drawable/ic_search_line"
+    android:drawablePadding="@dimen/padding"
+    android:gravity="center_vertical"
+    android:paddingStart="@dimen/padding"
+    android:paddingTop="@dimen/padding_vertical"
+    android:paddingEnd="@dimen/padding"
+    android:paddingBottom="@dimen/padding_vertical"
+    android:textColor="@color/colorTitle"
+    tools:text="刺杀其骑士团长" />

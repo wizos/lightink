@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_background_fill"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/padding_horizontal"
+    android:paddingTop="10dp"
+    android:paddingEnd="@dimen/padding_horizontal"
+    android:paddingBottom="10dp">
+
+    <cn.lightink.reader.widget.ImageUriView
+        android:id="@+id/mBookLinearCover"
+        android:layout_width="60dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="@dimen/dimen2x"
+        android:transitionName="@string/transition"
+        tools:src="@drawable/bg_card" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <cn.lightink.reader.widget.BoldTextView
+                android:id="@+id/mBookLinearName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dimen0x"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/colorTitle"
+                android:textSize="15sp"
+                tools:text="一个叫欧维的男人决定去死" />
+
+            <TextView
+                android:id="@+id/mBookLinearState"
+                android:layout_width="30dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="4dp"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="8.5sp"
+                tools:background="@drawable/bg_book_state_update"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/mBookLinearAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorContent"
+            android:textSize="13sp"
+            tools:text="雷德里克·巴克曼" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/mBookLinearStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorContent"
+            android:textSize="13sp"
+            tools:text="完结\u2000|\u20001　一个叫欧维的男人买了个不是电脑的电脑" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/mBookLinearProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorContent"
+            android:textSize="13sp"
+            tools:text="已读 23.5%" />
+    </LinearLayout>
+
+</LinearLayout>

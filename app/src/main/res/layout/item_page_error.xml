@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:backgroundTint="@color/colorForeground"
+    tools:layout_margin="@dimen/dimenReaderBoundary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:focusable="false"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/mErrorImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/reader_failed_content"
+            android:src="@drawable/ic_404" />
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mErrorTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimenReaderBoundary"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.5"
+            android:textSize="20sp"
+            tools:text="第一章" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mErrorMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimenReaderBoundary"
+        android:background="@drawable/bg_popup_menu"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/mErrorUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingStart="@dimen/dimen2v"
+            android:paddingTop="@dimen/dimen2v"
+            android:paddingEnd="@dimen/dimen2v"
+            android:paddingBottom="@dimen/dimen0x"
+            android:singleLine="true"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <cn.lightink.reader.widget.BoldTextView
+                android:id="@+id/mErrorWeb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selected_background"
+                android:gravity="center"
+                android:padding="@dimen/dimen2v"
+                android:text="@string/reader_failed_web"
+                android:textColor="@color/colorContent"
+                android:textSize="15sp" />
+
+            <cn.lightink.reader.widget.BoldTextView
+                android:id="@+id/mErrorTry"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selected_background"
+                android:gravity="center"
+                android:padding="@dimen/dimen2v"
+                android:text="@string/reader_failed_try"
+                android:textColor="@color/colorTitle"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

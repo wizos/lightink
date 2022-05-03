@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_background"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/padding"
+    android:paddingTop="@dimen/padding_vertical"
+    android:paddingEnd="@dimen/padding"
+    android:paddingBottom="@dimen/padding_vertical">
+
+    <TextView
+        android:id="@+id/mBookmarkTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textSize="14sp" />
+
+    <cn.lightink.reader.widget.JustifyTextView
+        android:id="@+id/mBookmarkSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:alpha="0.6"
+        android:includeFontPadding="false"
+        android:lineSpacingMultiplier="1.2"
+        android:maxLines="3"
+        android:textSize="14sp" />
+</LinearLayout>

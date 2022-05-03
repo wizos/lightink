@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/margin_horizontal"
+    android:background="@drawable/bg_dialog_round"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_horizontal"
+        android:layout_marginBottom="@dimen/margin_horizontal"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <TextView
+            android:id="@+id/mWarningMessageContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.3"
+            android:paddingStart="@dimen/padding_horizontal"
+            android:paddingEnd="@dimen/padding_horizontal"
+            tools:text="123123123"
+            android:textColor="@color/colorTitle"
+            android:textSize="15sp" />
+
+    </ScrollView>
+
+    <cn.lightink.reader.widget.BoldTextView
+        android:id="@+id/mWarningMessageCancel"
+        style="@style/Lightink.Button.Round"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_horizontal"
+        android:layout_marginEnd="@dimen/margin_horizontal"
+        android:layout_marginBottom="@dimen/margin_horizontal"
+        android:text="@string/close"
+        android:textColor="@color/color_enable"
+        android:textSize="14sp" />
+
+</LinearLayout>

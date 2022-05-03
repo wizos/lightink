@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.lightink.reader.widget.BoldTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_background"
+    android:ellipsize="end"
+    android:maxLines="1"
+    android:paddingStart="@dimen/dimen2x"
+    android:paddingTop="14dp"
+    android:paddingEnd="@dimen/dimen2x"
+    android:paddingBottom="14dp"
+    android:textColor="@color/colorTitle"
+    android:textSize="14sp"
+    tools:text="文字" />

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_background">
+
+    <TextView
+        android:id="@+id/mBookRankTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="6"
+        android:gravity="center"
+        android:paddingStart="@dimen/padding"
+        android:paddingTop="14dp"
+        android:paddingEnd="@dimen/padding"
+        android:paddingBottom="14dp"
+        android:textColor="@color/colorContent"
+        android:textSize="14sp"
+        tools:text="畅销榜" />
+</RelativeLayout>

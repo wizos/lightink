@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_background"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/padding_horizontal"
+    android:paddingTop="10dp"
+    android:paddingEnd="@dimen/padding_horizontal"
+    android:paddingBottom="10dp">
+
+    <cn.lightink.reader.widget.ImageUriView
+        android:id="@+id/mSimpleBookCover"
+        android:layout_width="60dp"
+        android:layout_height="84dp"
+        android:transitionName="@string/transition"
+        tools:background="@color/colorForeground" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical">
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mSimpleBookNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_horizontal"
+            android:layout_marginEnd="@dimen/margin"
+            android:textColor="@color/colorTitle"
+            android:textSize="16sp"
+            android:layout_alignBaseline="@id/mSimpleBookName"
+            tools:text="1" />
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mSimpleBookName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/mSimpleBookNo"
+            android:textColor="@color/colorTitle"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="故事新编 : 鲁迅小说精选集" />
+
+        <TextView
+            android:id="@+id/mSimpleBookAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mSimpleBookName"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/mSimpleBookNo"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/colorContent"
+            android:textSize="13sp"
+            tools:text="鲁迅" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_vertical"
+    android:layout_marginBottom="@dimen/margin_vertical"
+    android:background="@drawable/selected_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <cn.lightink.reader.widget.BoldTextView
+            android:id="@+id/mFeedGroupName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_feed_group"
+            android:drawablePadding="@dimen/padding"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding"
+            android:textColor="@color/colorTitle"
+            android:textSize="15sp"
+            tools:text="频道名称" />
+
+        <ImageButton
+            android:id="@+id/mFeedGroupArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/selected_background_borderless"
+            android:contentDescription="@null"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:src="@drawable/ic_arrow_down" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimenStroke"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:background="@color/colorStroke" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mFeedGroupRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:paddingTop="@dimen/padding_vertical"
+        android:paddingBottom="@dimen/padding_vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+</LinearLayout>

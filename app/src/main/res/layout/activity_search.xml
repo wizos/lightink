@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/search_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/mTopbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topbarDefaultSize"
+            android:layout_marginBottom="@dimen/margin_vertical"
+            android:animateLayoutChanges="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/margin_vertical"
+            android:paddingEnd="@dimen/margin_vertical">
+
+            <ImageButton
+                android:id="@+id/mSearchBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/selected_background_borderless_none"
+                android:contentDescription="@string/discover"
+                android:src="@drawable/ic_back" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="42dp"
+                android:layout_marginEnd="42dp"
+                android:animateLayoutChanges="true"
+                android:background="@drawable/bg_card_round">
+
+                <cn.lightink.reader.widget.ImeEditText
+                    android:id="@+id/mSearchBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:layout_centerVertical="true"
+                    android:drawableStart="@drawable/ic_search_line"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/colorContent"
+                    android:hint="@string/search_hint"
+                    android:imeOptions="actionSearch"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="32dp"
+                    android:singleLine="true"
+                    android:textColor="@color/colorTitle"
+                    android:textColorHint="@color/colorContent"
+                    android:textCursorDrawable="@drawable/ic_input_cursor">
+
+                    <requestFocus />
+                </cn.lightink.reader.widget.ImeEditText>
+
+                <ProgressBar
+                    android:id="@+id/mSearchProgressBar"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:scaleX="0.85"
+                    android:scaleY="0.85"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/mSearchClear"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/selected_background_borderless"
+                    android:contentDescription="@string/accessibility_search_clear"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_tips_close"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/mSearchBookSource"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/selected_background_borderless_none"
+                android:contentDescription="@string/search"
+                android:src="@drawable/ic_discover_booksource" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mSearchWordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mTopbar">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/mSearchHotGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                app:chipSpacingVertical="0dp" />
+
+            <LinearLayout
+                android:id="@+id/mSearchHistoryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mSearchHotGroup"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_horizontal"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/search_history"
+                        android:textColor="@color/colorContent"
+                        android:textSize="13sp"
+                        tools:ignore="RelativeOverlap" />
+
+                    <cn.lightink.reader.widget.BoldTextView
+                        android:id="@+id/mSearchHistoryClear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/selected_background_borderless"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/padding_horizontal"
+                        android:paddingTop="@dimen/padding_vertical"
+                        android:paddingEnd="@dimen/padding_horizontal"
+                        android:paddingBottom="@dimen/padding_vertical"
+                        android:text="@string/clear"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="13sp"
+                        tools:ignore="RelativeOverlap" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/mSearchHistoryRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingTop="@dimen/padding_vertical"
+                    android:paddingBottom="@dimen/padding_vertical" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/mSearchRecyclerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_ll"
+        android:visibility="gone">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackground"
+            app:elevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:text="@string/bookshelf"
+                    android:textColor="@color/colorContent"
+                    android:textSize="13sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/mLocalRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin_horizontal"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:background="@color/colorStroke" />
+
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <cn.lightink.reader.widget.FlexLayout
+            style="@style/AppTheme.Flexible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mSearchRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingBottom="@dimen/padding_vertical" />
+
+        </cn.lightink.reader.widget.FlexLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <TextView
+        android:id="@+id/mSearchResultNone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawableTop="@drawable/ic_none"
+        android:gravity="center"
+        android:paddingBottom="32dp"
+        android:textColor="@color/colorStroke"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+</RelativeLayout>

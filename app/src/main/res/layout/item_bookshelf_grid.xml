@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/mBookGridCoverLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <cn.lightink.reader.widget.ImageUriView
+            android:id="@+id/mBookGridCover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:transitionName="@string/transition" />
+
+        <cn.lightink.reader.widget.StateImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:padding="4dp"
+            android:src="@drawable/ic_book_check"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mBookGridState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@null" />
+
+    <cn.lightink.reader.widget.BoldTextView
+        android:id="@+id/mBookGridName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mBookGridCoverLayout"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/colorTitle"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+</RelativeLayout>

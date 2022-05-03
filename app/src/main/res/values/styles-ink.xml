@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- INK -->
+    <style name="Ink" />
+
+    <!-- 开关按钮 -->
+    <style name="Ink.Switch">
+        <item name="kswBackDrawable">@drawable/bg_switch_background</item>
+        <item name="kswThumbDrawable">@drawable/bg_switch_thumb</item>
+        <item name="kswThumbHeight">14dp</item>
+        <item name="kswThumbWidth">14dp</item>
+        <item name="kswThumbRangeRatio">2.2</item>
+    </style>
+
+    <!-- 按钮 -->
+    <style name="Ink.Button" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/dimenDefaultButtonHeight</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/btn_stroke</item>
+        <item name="android:textColor">@color/color_enable</item>
+    </style>
+
+    <!-- 进度条 -->
+    <style name="Ink.Loading">
+        <item name="android:layout_width">@dimen/dimenDefaultProgressSize</item>
+        <item name="android:layout_height">@dimen/dimenDefaultProgressSize</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:indeterminateTint">@color/colorContent</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <!-- INK -->
+    <style name="Lightink" />
+
+    <style name="Lightink.Item">
+        <item name="android:drawablePadding">@dimen/padding</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">@dimen/padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/padding_horizontal</item>
+        <item name="android:textColor">@color/colorTitle</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!-- 按钮 -->
+    <style name="Lightink.Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">middle</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- 圆角按钮 -->
+    <style name="Lightink.Button.Round">
+        <item name="android:background">@drawable/selected_foreground_round</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <style name="Lightink.Topbar" />
+
+    <!-- Topbar 圆角按钮 -->
+    <style name="Lightink.Topbar.Button">
+        <item name="android:background">@drawable/selected_foreground_round</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginEnd">@dimen/margin</item>
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:drawableTint">@color/colorRed</item>
+        <item name="android:backgroundTint">@color/colorRedBackground</item>
+    </style>
+
+    <!-- Rating Bar 评分 -->
+    <style name="Lightink.Rating" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="colorControlNormal">@color/colorNormal</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <!-- 字号 -->
+    <style name="Lightink.TextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.lightink.reader.widget.TopbarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/setting_memory" />
+
+    <cn.lightink.reader.widget.FlexLayout
+        style="@style/AppTheme.Flexible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:text="@string/memory_built_in"
+                    android:textColor="@color/colorContent"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/padding"
+                    android:paddingEnd="@dimen/padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_memory_database"
+                        android:drawablePadding="@dimen/padding"
+                        android:drawableTint="@color/colorTitle"
+                        android:gravity="center_vertical"
+                        android:text="@string/memory_database"
+                        android:textColor="@color/colorTitle" />
+
+                    <TextView
+                        android:id="@+id/mMemoryDatabaseData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/padding"
+                    android:paddingEnd="@dimen/padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_memory_so"
+                        android:drawablePadding="@dimen/padding"
+                        android:drawableTint="@color/colorTitle"
+                        android:gravity="center_vertical"
+                        android:text="@string/memory_libs"
+                        android:textColor="@color/colorTitle" />
+
+                    <TextView
+                        android:id="@+id/mMemoryLibsData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/padding"
+                    android:paddingEnd="@dimen/padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_memory_book"
+                        android:drawablePadding="@dimen/padding"
+                        android:drawableTint="@color/colorTitle"
+                        android:gravity="center_vertical"
+                        android:text="@string/memory_book"
+                        android:textColor="@color/colorTitle" />
+
+                    <TextView
+                        android:id="@+id/mMemoryBookData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/selected_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/padding"
+                    android:paddingEnd="@dimen/padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_memory_image"
+                        android:drawablePadding="@dimen/padding"
+                        android:drawableTint="@color/colorTitle"
+                        android:gravity="center_vertical"
+                        android:text="@string/memory_cache"
+                        android:textColor="@color/colorTitle" />
+
+                    <TextView
+                        android:id="@+id/mMemoryCacheData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_clear_small"
+                        android:drawablePadding="@dimen/padding_tiny"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/selected_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/padding"
+                    android:paddingEnd="@dimen/padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_memory_font"
+                        android:drawablePadding="@dimen/padding"
+                        android:drawableTint="@color/colorTitle"
+                        android:gravity="center_vertical"
+                        android:text="@string/memory_system_font"
+                        android:textColor="@color/colorTitle" />
+
+                    <TextView
+                        android:id="@+id/mMemorySystemFontData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_clear_small"
+                        android:drawablePadding="@dimen/padding_tiny"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimenStroke"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_vertical"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:background="@color/colorStroke" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin_vertical"
+                    android:text="@string/memory_external"
+                    android:textColor="@color/colorContent"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/padding"
+                    android:paddingEnd="@dimen/padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_memory_font"
+                        android:drawablePadding="@dimen/padding"
+                        android:drawableTint="@color/colorTitle"
+                        android:gravity="center_vertical"
+                        android:text="@string/memory_font"
+                        android:textColor="@color/colorTitle" />
+
+                    <TextView
+                        android:id="@+id/mMemoryFontData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/padding"
+                    android:paddingEnd="@dimen/padding">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_memory_book"
+                        android:drawablePadding="@dimen/padding"
+                        android:drawableTint="@color/colorTitle"
+                        android:gravity="center_vertical"
+                        android:text="@string/memory_file"
+                        android:textColor="@color/colorTitle" />
+
+                    <TextView
+                        android:id="@+id/mMemoryFileData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </cn.lightink.reader.widget.FlexLayout>
+
+</LinearLayout>

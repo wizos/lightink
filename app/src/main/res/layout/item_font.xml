@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimenReaderItemHeight"
+    android:animateLayoutChanges="true">
+
+    <TextView
+        android:id="@+id/mFontDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toStartOf="@+id/mFontInstall"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:paddingStart="@dimen/dimen2v"
+        android:paddingEnd="@dimen/dimen2v"
+        android:textColor="@color/colorTitle"
+        android:textSize="14sp"
+        tools:text="思源宋体" />
+
+    <TextView
+        android:id="@+id/mFontInstall"
+        style="@style/Ink.Button"
+        android:layout_width="56dp"
+        android:layout_height="28dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dimen3x"
+        android:layout_marginEnd="@dimen/dimen2x"
+        android:text="@string/use"
+        android:textSize="12sp" />
+
+    <ProgressBar
+        android:id="@+id/mFontInstallLoading"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="29dp"
+        android:indeterminateTint="@color/colorAccent"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/mFontUsing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="32dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_submit"
+        android:visibility="gone" />
+
+</RelativeLayout>

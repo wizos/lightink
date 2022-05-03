@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.lightink.reader.widget.FlexLayout
+        android:id="@+id/mReaderFlexLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableRefresh="true">
+
+        <cn.lightink.reader.widget.BookmarkHeader
+            android:id="@+id/mReaderBookmarkHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mReaderPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+
+    </cn.lightink.reader.widget.FlexLayout>
+
+    <RelativeLayout
+        android:id="@+id/mReaderLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        tools:visibility="gone">
+
+        <ProgressBar
+            style="?android:progressBarStyleHorizontal"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mReaderLoadingTitle"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/mReaderLoadingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/margin_medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:lineSpacingMultiplier="1.5"
+            android:textSize="15sp"
+            tools:text="第一章" />
+
+    </RelativeLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/mReaderMenuLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bottom_sheet"
+            android:elevation="8dp"
+            android:focusable="true"
+            app:behavior_hideable="true"
+            app:layout_behavior="@string/bottom_sheet_behavior"
+            tools:behavior_hideable="false"
+            tools:behavior_peekHeight="218dp">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/mReaderMenuPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <View
+                android:id="@+id/mTopIndicator"
+                android:layout_width="36dp"
+                android:layout_height="4dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:alpha="0.4"
+                android:background="@drawable/bg_card_round" />
+
+            <View
+                android:id="@+id/mReaderMenuTabLine"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimenStroke"
+                android:alpha="0.1" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/mReaderMenuTab"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/topbarDefaultSize"
+                android:layout_below="@+id/mReaderMenuTabLine"
+                app:tabIndicatorColor="@android:color/transparent"
+                app:tabIndicatorFullWidth="false"
+                app:tabMode="fixed"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabTextAppearance="@style/TabTextAppearance" />
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText,SmallSp">
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="340dp"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/help2" />
+
+    <cn.lightink.reader.widget.BoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.1"
+        android:text="支持RSS/Atom简易资讯聚合阅读\n使用右上角 + 浏览商店或添加订阅链接"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/mHelpFeedVerify"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:background="@drawable/selected_foreground"
+        android:backgroundTint="@color/colorTitle"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="添加订阅链接"
+        android:textColor="@color/colorBackground"
+        android:textSize="12sp" />
+
+</LinearLayout>

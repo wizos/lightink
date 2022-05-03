@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/dimen1v"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/dimen2v"
+        android:paddingBottom="@dimen/dimen1v"
+        android:text="@string/select_bookshelf"
+        android:textColor="@color/colorTitle"
+        android:textSize="16sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mBookshelfRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:paddingStart="@dimen/dimen0x"
+        android:paddingEnd="@dimen/dimen0x" />
+
+    <CheckBox
+        android:id="@+id/mBookshelfPreferred"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen2v"
+        android:layout_marginEnd="@dimen/dimen2v"
+        android:background="@drawable/selected_background_borderless"
+        android:button="@drawable/ic_check"
+        android:buttonTint="@color/colorContent"
+        android:paddingStart="@dimen/dimen1x"
+        android:paddingEnd="0dp"
+        android:text="@string/select_bookshelf_set_preferred"
+        android:textColor="@color/colorContent"
+        android:textSize="12sp" />
+
+</LinearLayout>

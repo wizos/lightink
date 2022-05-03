@@ -1,0 +1,309 @@
+<resources>
+    <string name="app_name">轻墨</string>
+
+    <!-- Profile -->
+
+    <!-- Bookshelf -->
+    <string name="bookshelf_edit">编辑书架</string>
+    <string name="bookshelf_wait_input">书架名称</string>
+    <string name="preferred">首选</string>
+    <string name="bookshelf_preferred_open">开启</string>
+    <string name="bookshelf_preferred_close">关闭</string>
+    <string name="bookshelf_preferred_tips">当有多个书架且有零个或多个以上的首选书架时，每次加入书架前需要手动指定书架。</string>
+    <string name="bookshelf_layout">布局</string>
+    <string name="bookshelf_layout_grid">网格</string>
+    <string name="bookshelf_layout_list">列表</string>
+    <string name="bookshelf_info">信息</string>
+    <string name="bookshelf_info_brief">简要</string>
+    <string name="bookshelf_info_full">详细</string>
+    <string name="bookshelf_info_tips">网格中简要仅显示封面，详细额外显示书名；列表中简要显示书名、作者及未读章节数，详情额外显示最新章节名。</string>
+    <string name="bookshelf_sort">排序</string>
+    <string name="bookshelf_sort_time">时间</string>
+    <string name="bookshelf_sort_drag">拖拽</string>
+    <string name="bookshelf_sort_tips">时间将根据图书最后一次阅读的时间倒序排序；拖拽默认根据加入书架的时间正序排序，通过长按菜单可以拖拽排序。</string>
+    <string name="save">保存</string>
+    <string name="select_bookshelf">选择书架</string>
+    <string name="select_bookshelf_set_preferred">同时设为首选，下次自动选择此书架</string>
+
+    <!-- Book Menu -->
+    <string name="book_delete_title">删除图书</string>
+    <string name="book_delete_content">完全抹除图书数据：数据库信息、本地阅读记录、私有目录文件结构、章节缓存和插画等。</string>
+    <string name="book_delete_check">同时删除已同步的空间资源</string>
+
+    <!-- Book Summary Info -->
+    <string name="book_summary_info">图书详情</string>
+    <string name="book_summary_cache">章节缓存</string>
+    <string name="book_summary_name">书名</string>
+    <string name="book_summary_author">作者</string>
+    <string name="book_summary_status">标记完结时将不再检查章节是否有更新。当标记完结且全部章节都是已读状态下，该图书视为读完。</string>
+    <string name="book_summary_status_finished">已经完结</string>
+    <string name="book_summary_chapter">阅读进度</string>
+    <string name="book_summary_chapter_none">没有记录</string>
+    <string name="book_summary_statistics">阅读统计</string>
+    <string name="book_summary_statistics_format">累计阅读%d分钟，平均%d字/分钟</string>
+
+    <!-- Discover -->
+    <string name="discover_source">书源</string>
+    <string name="discover_rank">排行</string>
+    <string name="discover_feed">RSS</string>
+    <string name="discover_forum">社区</string>
+    <string name="discover_setting">设置</string>
+
+    <string name="discover_air_play">投屏</string>
+    <!-- BookSource -->
+    <string name="my_book_source">我的书源</string>
+
+    <!-- Discover Search -->
+    <string name="search_hint">搜索书名或作者</string>
+
+
+    <!-- Discover Cloud -->
+
+    <!-- Setting -->
+    <string name="chase_update">追更模式</string>
+    <string name="chase_update_help">该功能基于消息通知（非服务器推送），适用于符合规则的图书订阅更新。当设备连接网络时，服务每间隔1小时左右自动检查已订阅的图书章节是否有更新，同时将更新详情以消息通知的方式展现，耗电量几乎可以忽略不计且夜间免打扰。该模式需在多任务中锁定App。</string>
+    <string name="setting_follow_system">系统主题</string>
+    <string name="setting_follow_system_help">跟随系统切换深色主题，适用于Android 10+系统。</string>
+    <string name="setting_font_size">中等字号</string>
+    <string name="setting_simple_content">配置需重启应用生效</string>
+    <string name="setting_open_source">开源协议</string>
+    <string name="setting_memory">存储空间</string>
+    <string name="setting_help">使用指南</string>
+
+    <!-- Memory -->
+    <string name="memory_built_in">内置存储</string>
+    <string name="memory_database">数据库</string>
+    <string name="memory_libs">链接库</string>
+    <string name="memory_book">图书数据</string>
+    <string name="memory_cache">图片缓存</string>
+    <string name="memory_system_font">系统字体</string>
+    <string name="memory_external">外置存储</string>
+    <string name="memory_font">字体</string>
+    <string name="memory_file">图书</string>
+
+    <!-- SAF -->
+
+    <!-- RSS -->
+    <string name="feed_edit">编辑订阅</string>
+    <string name="unsubscribe_public_account">取消订阅</string>
+    <string name="feed_clear">清理已读</string>
+
+    <!-- Discover Reward -->
+    <string name="ticket_use_single">单张投入</string>
+    <string name="ticket_use_all">全部投入</string>
+
+    <!-- Book Source Store Repository -->
+    <string name="booksource_auth">账号授权</string>
+    <string name="booksource_auth_success">已授权</string>
+    <string name="booksource_auth_failure">未授权</string>
+    <string name="booksource_auth_not_install">未安装网站指定的应用</string>
+    <string name="booksource_rank">排行榜</string>
+    <string name="booksource_none">未安装书源</string>
+    <string name="booksource_rank_none">未安装带有排行榜的书源</string>
+
+    <!-- Book Detail -->
+    <string name="book_detail_insert_bookshelf">加入书架</string>
+    <string name="book_detail_immediately_read">立刻阅读</string>
+    <string name="book_detail_loading_failed">读取失败</string>
+    <string name="book_detail_continue_read">继续阅读</string>
+    <string name="book_detail_none_source">没有书源</string>
+
+    <!-- Reader -->
+    <string name="reader_failed_content">读取失败\n请检查设备网络是否正常</string>
+    <string name="reader_failed_web">访问网页</string>
+    <string name="reader_failed_try">再次读取</string>
+    <string name="reader_auth_tips">读取失败：账号未授权登录或授权过期</string>
+    <string name="reader_auth_login">前往授权</string>
+    <string name="reader_auth_buy_tips">读取失败：账号余额不足或未自动订阅章节</string>
+    <string name="reader_auth_buy_login">前往充值</string>
+    <string name="reader_auth_deprecated">当前书源已被废弃</string>
+
+    <!-- Reader Sync Reading Progress -->
+    <string name="sync_progress">云端进度</string>
+    <string name="sync">同步</string>
+
+    <!-- Reader Menu -->
+    <string name="insert_bookshelf">加入书架</string>
+    <string name="change_source">换源</string>
+    <string name="use">使用</string>
+    <string name="used">已用</string>
+    <string name="setting">设置</string>
+
+    <!-- Reader Setting -->
+    <string name="reader_summary_progress_title">阅读进度</string>
+    <string name="reader_summary_progress">已读 %d / %d 章</string>
+    <string name="reader_summary_statistics_title">阅读统计</string>
+    <string name="reader_summary_statistics">累计阅读 %d 分钟，平均 %d 字/分钟</string>
+
+    <string name="reader_setting_theme">主题</string>
+    <string name="reader_setting_family">字体</string>
+    <string name="reader_setting_book_source">换源</string>
+    <string name="reader_setting_font">字号</string>
+    <string name="reader_setting_font_size">字号 %dF</string>
+    <string name="reader_setting_letter_spacing">字距 %.1f</string>
+    <string name="reader_setting_line">行段</string>
+    <string name="reader_setting_line_spacing">行间距 %.1f</string>
+    <string name="reader_setting_paragraph_spacing">段间距 %.1f</string>
+    <string name="reader_setting_purify">屏蔽</string>
+    <string name="reader_setting_dormant">屏幕常亮</string>
+    <string name="reader_setting_brightness">亮度</string>
+    <string name="reader_setting_brightness_value">亮度 %d%%</string>
+    <string name="reader_setting_brightness_auto">亮度 自动</string>
+    <string name="reader_setting_location_value">本章进度 %d/%d</string>
+    <string name="reader_setting_location">定位</string>
+    <string name="reader_setting_cache">缓存</string>
+    <string name="reader_setting_turn_vertical">上下翻页</string>
+    <string name="reader_setting_click_animate">点击动画</string>
+    <string name="reader_setting_turn_only_next">全屏下一页</string>
+    <string name="reader_setting_turn_volume">音量键翻页</string>
+    <string name="reader_setting_first_line_indent">首行缩进</string>
+    <string name="reader_setting_long_clickable">文本长按</string>
+    <string name="reader_setting_pull_bookmark">下拉书签</string>
+    <string name="reader_setting_font_bold">字体加粗</string>
+    <string name="reader_setting_mipmap_follow">背景跟随</string>
+    <string name="reader_setting_status_bar">状态栏</string>
+    <string name="reader_setting_navigation_bar">导航栏</string>
+    <string name="reader_setting_notch_bar">异形屏</string>
+    <string name="reader_setting_custom_status_bar">时间电量</string>
+    <string name="reader_setting_title">标题页码</string>
+    <string name="reader_setting_font_internal">内置字体</string>
+    <string name="reader_setting_font_fixed">外置字体 %s/</string>
+
+    <!-- Reader Setting Theme -->
+    <string name="theme_new">新建主题</string>
+    <string name="theme_light">日间主题</string>
+    <string name="theme_night">夜间主题</string>
+    <string name="theme_background">阅读背景</string>
+    <string name="theme_foreground">目录背景</string>
+    <string name="theme_content">主要内容</string>
+    <string name="theme_secondary">次要内容</string>
+    <string name="theme_control">着重内容</string>
+    <string name="theme_horizontal">左右边距</string>
+    <string name="theme_top">顶部边距</string>
+    <string name="theme_bottom">底部边距</string>
+    <string name="theme_color_red">R - %x</string>
+    <string name="theme_color_green">G - %x</string>
+    <string name="theme_color_blue">B - %x</string>
+    <string name="theme_editor_content">\u3000\u3000主题由两部分构成：第一部分是配色，第二部分是边距。\n\n\u3000\u3000配色由阅读背景、目录背景、主要内容、次要内容及着重内容构成。其中阅读背景支持使用背景图片，当选择一张图片时，主题编辑器会根据图片提取出一套配色便于快捷搭配，需要注意的是，即使使用图片也需要设置背景色，因为按钮等背景颜色仍需使用它。主要内容指正文标题、正文内容、菜单标记和菜单图标。除此之外的文字均属于次要内容。\n\n\u3000\u3000边距由横向、顶部和底部构成。因为异形屏和状态栏的存在，当设置状态栏显示且顶部边距小于状态栏高度时，会使用状态高度。\n\n\u3000\u3000编辑时点击内容可以展开或收起菜单。</string>
+    <string name="theme_pick_picture">选取图片</string>
+    <string name="theme_complete">保存主题</string>
+    <string name="theme_name_hint">编辑主题名称</string>
+
+    <!-- TTS -->
+    <string name="tts_engine_none">未设置文字转语音引擎</string>
+
+    <!-- Profile Login -->
+    <string name="login">登录</string>
+
+    <!-- Profile -->
+    <string name="sso_wechat">微信</string>
+    <string name="sso_weibo">微博</string>
+    <string name="sso_qq">QQ</string>
+
+    <!-- Community -->
+
+    <!-- Recharge -->
+
+    <!-- History -->
+    <string name="search_history">历史搜索</string>
+
+    <!-- Medal -->
+
+    <!-- 排行榜 -->
+    <string name="book_rank_settings">设置排行榜</string>
+
+    <!-- Air Play -->
+    <string name="air_play_tips">与PC同享美好的阅读时光</string>
+
+    <!-- Web -->
+    <string name="home">首页</string>
+    <string name="web_try">重新加载</string>
+
+    <!-- Bottom Selector Menu -->
+    <string name="menu_summary">查看详情</string>
+    <string name="menu_move_bookshelf">移动书架</string>
+    <string name="menu_delete_book">删除图书</string>
+    <string name="menu_manage_book">批量移动/删除、拖拽排序</string>
+    <string name="menu_edit_bookshelf">编辑书架</string>
+    <string name="menu_delete_bookshelf">删除书架</string>
+
+    <!-- Base -->
+    <string name="download">下载</string>
+    <string name="delete">删除</string>
+    <string name="move">移动</string>
+    <string name="edit">编辑</string>
+    <string name="search">搜索</string>
+    <string name="copy">复制</string>
+    <string name="report_error">封面报错</string>
+    <string name="bookmark">书签</string>
+    <string name="bookmarks">书签列表</string>
+    <string name="purify">屏蔽</string>
+    <string name="purify_list">屏蔽管理</string>
+    <string name="catalog">目录</string>
+    <string name="play">播放</string>
+    <string name="pause">暂停</string>
+    <string name="timer">定时</string>
+    <string name="uninstall">卸载</string>
+    <string name="score">评分</string>
+    <string name="summary">详情</string>
+    <string name="sure">确认</string>
+    <string name="notice">提示</string>
+    <string name="submit">提交</string>
+    <string name="cancel">取消</string>
+    <string name="close">关闭</string>
+    <string name="book_name">《%s》</string>
+    <string name="transition">transition</string>
+    <string name="more">· · ·</string>
+    <string name="all">更多</string>
+    <string name="verify">验证</string>
+    <string name="check_update">检查更新</string>
+    <string name="check_update_time_no">START</string>
+    <string name="check_update_time_30">30MIN</string>
+    <string name="check_update_time_60">60MIN</string>
+    <string name="check_update_summary">图书/RSS两次时间间隔大于设定的时长时触发检查。</string>
+
+    <!-- Accessibility Service Content Description -->
+    <string name="accessibility_search_clear">清空搜索内容</string>
+    <string name="accessibility_change_cover">切换封面</string>
+    <string name="accessibility_more">更多</string>
+    <string name="accessibility_404">网络异常</string>
+    <string name="accessibility_bookmark">书签</string>
+    <string name="accessibility_theme">主题</string>
+    <string name="accessibility_listen">听书</string>
+    <string name="accessibility_shutdown">关闭</string>
+    <string name="accessibility_sort">排序</string>
+    <string name="accessibility_reset">重置</string>
+
+    <!-- Helper -->
+    <string name="help_read_loading">章节内容可能存在插图，或者书源访问速度过慢，请耐心等待。</string>
+
+    <!-- Shortcuts -->
+    <string name="shortcut_read">继续阅读</string>
+
+    <!-- Lucky -->
+
+    <!-- Extract -->
+    <string name="extract_reprint">转摘（消耗2张银券）</string>
+    <string name="extract_love">喜欢</string>
+    <string name="extract_loved">已喜欢</string>
+
+    <string name="bookshelf">书架</string>
+    <string name="discover">发现</string>
+    <string name="create">新建</string>
+    <string name="select_category">选择分类</string>
+    <string name="bookshelf_progress">已读%.1f%%</string>
+    <string name="bookshelf_progress_none">未读</string>
+    <string name="bookshelf_progress_full">%s\u2000剩余%d章</string>
+    <string name="book_end">完结 | %s</string>
+    <string name="book_not_end">连载 | %s</string>
+    <string name="clear">清空</string>
+    <string name="clean">清理</string>
+    <string name="book_source_list">书源列表</string>
+
+    <!-- Notification Channel -->
+    <string name="channel_books_title">图书</string>
+    <string name="channel_books_description">缓存、追更、导入等通知</string>
+    <string name="channel_media_title">朗读</string>
+    <string name="channel_media_description">文字转语音（TTS）通知</string>
+
+</resources>

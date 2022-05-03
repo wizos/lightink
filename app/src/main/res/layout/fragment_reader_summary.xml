@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/mReaderProgressTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/margin"
+        android:includeFontPadding="false"
+        android:text="@string/reader_summary_progress_title"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/mReaderProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin_vertical"
+        android:includeFontPadding="false"
+        android:text="@string/reader_summary_progress"
+        android:textSize="14.5sp" />
+
+    <TextView
+        android:id="@+id/mReaderStatisticsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:includeFontPadding="false"
+        android:text="@string/reader_summary_statistics_title"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/mReaderStatistics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin_vertical"
+        android:includeFontPadding="false"
+        android:text="@string/reader_summary_statistics"
+        android:textSize="14.5sp" />
+
+    <TextView
+        android:id="@+id/mReaderBookmarkTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:includeFontPadding="false"
+        android:text="@string/bookmarks"
+        android:textSize="12sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mReaderBookmarkRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never" />
+
+</LinearLayout>

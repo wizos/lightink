@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/mColorValueForeground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_card_round"
+        android:backgroundTint="#FFF3E8"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        tools:backgroundTint="@color/colorBackground">
+
+        <RelativeLayout
+            android:id="@+id/mColorValueBackground"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_margin="2.5dp"
+            android:background="@drawable/bg_card_round"
+            android:backgroundTint="#48394F"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/mColorValueText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@+id/mColorValueReset"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_color_picker_tag"
+                android:drawablePadding="@dimen/padding"
+                android:drawableTint="@android:color/white"
+                android:gravity="center"
+                android:maxLength="7"
+                android:paddingStart="@dimen/padding"
+                android:paddingEnd="@dimen/padding"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                tools:text="48394F" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/mColorValueInput"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@+id/mColorValueReset"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_color_picker_tag"
+                android:drawablePadding="@dimen/padding"
+                android:drawableTint="@android:color/white"
+                android:gravity="center"
+                android:inputType="textCapCharacters"
+                android:maxLength="7"
+                android:paddingStart="@dimen/padding"
+                android:paddingEnd="@dimen/padding"
+                android:textColor="@android:color/white"
+                android:textCursorDrawable="@null" />
+
+            <ImageButton
+                android:id="@+id/mColorValueReset"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin"
+                android:background="@drawable/selected_background_borderless"
+                android:contentDescription="@string/accessibility_reset"
+                android:src="@drawable/ic_color_picker_reset"
+                android:tint="@android:color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mColorRForeground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_card_round"
+        android:backgroundTint="#FFF3E8"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:longClickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/mColorRBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2.5dp"
+            android:background="@drawable/bg_card_round"
+            android:backgroundTint="#F4E9DE"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mColorRText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_seek_text"
+                android:backgroundTint="#FF605B"
+                android:paddingStart="@dimen/padding"
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="10dp"
+                android:text="@string/theme_color_red"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="12sp" />
+
+            <cn.lightink.reader.widget.FlexSeekBar
+                android:id="@+id/mColorRSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:clickable="false"
+                android:max="255"
+                android:maxHeight="120dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:progress="100"
+                android:progressDrawable="@drawable/bg_seek_progress"
+                android:progressTint="#FF605B"
+                android:thumb="@null" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mColorGForeground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_card_round"
+        android:backgroundTint="#FFF3E8"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:longClickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/mColorGBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2.5dp"
+            android:background="@drawable/bg_card_round"
+            android:backgroundTint="#F4E9DE"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mColorGText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_seek_text"
+                android:backgroundTint="#15C781"
+                android:paddingStart="@dimen/padding"
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="10dp"
+                android:text="@string/theme_color_green"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="12sp" />
+
+            <cn.lightink.reader.widget.FlexSeekBar
+                android:id="@+id/mColorGSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:clickable="false"
+                android:max="255"
+                android:maxHeight="120dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:progressDrawable="@drawable/bg_seek_progress"
+                android:progressTint="#15C781"
+                android:thumb="@null" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mColorBForeground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/bg_card_round"
+        android:backgroundTint="#FFF3E8"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:longClickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/mColorBBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2.5dp"
+            android:background="@drawable/bg_card_round"
+            android:backgroundTint="#F4E9DE"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mColorBText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_seek_text"
+                android:backgroundTint="#0099FF"
+                android:paddingStart="@dimen/padding"
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="10dp"
+                android:text="@string/theme_color_blue"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="12sp" />
+
+            <cn.lightink.reader.widget.FlexSeekBar
+                android:id="@+id/mColorBSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:clickable="false"
+                android:max="255"
+                android:maxHeight="120dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:progressDrawable="@drawable/bg_seek_progress"
+                android:progressTint="#0099FF"
+                android:thumb="@null" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
