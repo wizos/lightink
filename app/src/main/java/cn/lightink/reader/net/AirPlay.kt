@@ -116,7 +116,7 @@ class AirPlayService : Service(), Server.ServerListener {
         when {
             bookSource.name.isBlank() -> mapOf("message" to "书源未命名")
             Room.bookSource().isInstalled(bookSource.url) -> mapOf("message" to "书源已安装，无法覆盖")
-            else -> Room.bookSource().install(BookSource(0, bookSource.name, bookSource.url, bookSource.version, !bookSource.rank.isNullOrEmpty(), bookSource.auth != null, EMPTY, -1, 0F, json)).let {
+            else -> Room.bookSource().install(BookSource(0, bookSource.name, bookSource.url, bookSource.version, !bookSource.rank.isNullOrEmpty(), bookSource.auth != null, EMPTY,  0F, json)).let {
                 if (!bookSource.rank.isNullOrEmpty()) {
                     Room.bookRank().insert(BookRank(bookSource.url, bookSource.name))
                 }

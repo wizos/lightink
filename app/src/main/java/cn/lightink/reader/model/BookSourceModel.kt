@@ -22,13 +22,13 @@ import com.google.gson.Gson
  * @param content       内容
  */
 @Entity
-data class BookSource(val id: Int, var name: String, @PrimaryKey val url: String, var version: Int, var rank: Boolean, var account: Boolean, var owner: String, var installs: Int, var score: Float, var content: String, var frequency: Int = 0) {
+data class BookSource(val id: Int, var name: String, @PrimaryKey val url: String, var version: Int, var rank: Boolean, var account: Boolean, var owner: String, var score: Float, var content: String, var frequency: Int = 0) {
 
     val json: BookSourceJson
         get() = Gson().fromJson(content, BookSourceJson::class.java)
 
     val author: String
-        get() = "${if (installs > -1) owner else "privacy"}\u2000-\u2000$url"
+        get() = "${if (-1 > -1) owner else "privacy"}\u2000-\u2000$url" //todo
 
     fun sameTo(bookSource: BookSource): Boolean {
         if (name == bookSource.name && version == bookSource.version && rank == bookSource.rank && account == bookSource.account && owner == bookSource.owner && score == bookSource.score) {
@@ -39,7 +39,6 @@ data class BookSource(val id: Int, var name: String, @PrimaryKey val url: String
         rank = bookSource.rank
         account = bookSource.account
         owner = bookSource.owner
-        installs = bookSource.installs
         score = bookSource.score
         if (bookSource.content.isNotBlank()) {
             content = bookSource.content

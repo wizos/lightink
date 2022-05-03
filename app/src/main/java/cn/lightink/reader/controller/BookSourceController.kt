@@ -80,7 +80,7 @@ class BookSourceController : ViewModel() {
                 }
             } else {
                 //未安装
-                Room.bookSource().install(BookSource(0, response.data.name, response.data.url, response.data.version, !response.data.rank.isNullOrEmpty(), response.data.auth != null, baseUrl, -1, 0F, response.data.toJson()))
+                Room.bookSource().install(BookSource(0, response.data.name, response.data.url, response.data.version, !response.data.rank.isNullOrEmpty(), response.data.auth != null, baseUrl, 0F, response.data.toJson()))
                 if (!response.data.rank.isNullOrEmpty() && !Room.bookRank().isExist(response.data.url)) {
                     Room.bookRank().insert(BookRank(response.data.url, response.data.name))
                 }
