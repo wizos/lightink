@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
+import android.util.Log
 import android.util.TypedValue
 import android.view.*
 import android.webkit.URLUtil
@@ -84,15 +85,15 @@ class ReaderActivity : LifecycleActivity() {
         setupView(savedInstanceState)
         setupTheme()
         controller.initializedLive.observe(this, initializer)
-        controller.autoSynchronize().observe(this) { showProgressDialog(it) }
+//        controller.autoSynchronize().observe(this) { showProgressDialog(it) }
         if (controller.preview) window.decorView.post { ReaderPreviewPopup(this) }
         mReaderPager.post {
             setupDisplay(mReaderPager.height)
             setupMenuView()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                controller.loadChapter(savedInstanceState == null || isInMultiWindowMode).observe(this, loader)
+                controller.loadChapter(true).observe(this, loader)
             } else {
-                controller.loadChapter(savedInstanceState == null).observe(this, loader)
+                controller.loadChapter(true).observe(this, loader)
             }
         }
     }
