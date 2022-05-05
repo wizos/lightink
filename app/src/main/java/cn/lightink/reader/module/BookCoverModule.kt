@@ -30,7 +30,7 @@ object BookCover {
     private fun queryByDouban(name: String): List<Cover> {
         return try {
             val document = Jsoup.connect("https://m.douban.com/search/?query=$name&type=book").get()
-            val elements = document.body().select("ul.search_results_subjects > li > a").filter { it.selectFirst("span.subject-title").text().wrap().contains(name.wrap()) }
+            val elements = document.body().select("ul.search_results_subjects > li > a").filter { it.selectFirst("span.subject-title")!!.text().wrap().contains(name.wrap()) }
             elements.map { Cover(it.select("img").attr("src")) }.filter { it.url.contains("book-default-lpic").not() }
         } catch (e: Exception) {
             emptyList()

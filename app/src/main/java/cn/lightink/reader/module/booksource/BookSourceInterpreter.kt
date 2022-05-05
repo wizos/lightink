@@ -48,7 +48,7 @@ object BookSourceInterpreter {
                     val head = Jsoup.parse(document).head()
                     var attr = head.selectFirst("meta[charset]")?.attr("charset")
                     if (attr.isNullOrBlank()) {
-                        attr = Regex("(?<=charset=).+").find(head.selectFirst("meta[content*=charset]").attr("content"))?.value
+                        attr = Regex("(?<=charset=).+").find(head.selectFirst("meta[content*=charset]")!!.attr("content"))?.value
                     }
                     if (attr?.isNotBlank() == true) {
                         document = String(body, Charset.forName(attr))
