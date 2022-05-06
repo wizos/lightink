@@ -1,6 +1,7 @@
 package cn.lightink.reader.model
 
 import android.os.Parcelable
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import cn.lightink.reader.BOOK_PATH
@@ -60,15 +61,17 @@ data class Book(val objectId: String, var name: String, var author: String, var 
         if (!File(path, MP_FILENAME_BOOK_SOURCE).exists()) return null
         val json = File(path, MP_FILENAME_BOOK_SOURCE).readText()
         return try {
-            val currentJson = Gson().fromJson(json, BookSourceJson::class.java)
-            val roomJson = Room.bookSource().get(currentJson.url)?.json
-            if (roomJson?.version != null && roomJson.version > currentJson.version) {
-                File(path, MP_FILENAME_BOOK_SOURCE).writeText(roomJson.toJson())
-                BookSourceParser(roomJson)
+            val currentJson = Gson().fromJson(json, BookSource::class.java)
+            val bookSource = Room.bookSource().get(currentJson.url)
+//            val roomJson = bookSource?.json
+            if (bookSource?.version != null && bookSource.version > currentJson.version) {
+                File(path, MP_FILENAME_BOOK_SOURCE).writeText(bookSource.toJson())
+                BookSourceParser(bookSource)
             } else {
-                BookSourceParser(currentJson)
+                BookSourceParser(bookSource!!)
             }
         } catch (e: Exception) {
+            Log.e("Book", "getBookSource error", e)
             null
         }
     }

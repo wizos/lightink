@@ -103,7 +103,18 @@ class AirPlayService : Service(), Server.ServerListener {
 
     @PostMapping("/dev/debug")
     fun debug(@RequestBody json: String) = try {
-        bookSourceParser = BookSourceParser(json.fromJson())
+        val bookSource = json.fromJson<BookSourceJson>()
+        bookSourceParser = BookSourceParser(BookSource(
+            0,
+            bookSource.name,
+            bookSource.url,
+            bookSource.version,
+            !bookSource.rank.isNullOrEmpty(),
+            bookSource.auth != null,
+            bookSource.url,
+            "json",
+            bookSource.toJson()
+        ))
         mapOf("message" to "调试书源已更新").toJson(true)
     } catch (e: Exception) {
         mapOf("message" to "书源格式错误").toJson(true)
@@ -112,11 +123,22 @@ class AirPlayService : Service(), Server.ServerListener {
     @PostMapping("/dev/install")
     fun install(@RequestBody json: String) = try {
         val bookSource = json.fromJson<BookSourceJson>()
-        bookSourceParser = BookSourceParser(bookSource)
+        bookSourceParser = BookSourceParser(BookSource(
+            0,
+            bookSource.name,
+            bookSource.url,
+            bookSource.version,
+            !bookSource.rank.isNullOrEmpty(),
+            bookSource.auth != null,
+            bookSource.url,
+            "json",
+            bookSource.toJson()
+        ))
         when {
             bookSource.name.isBlank() -> mapOf("message" to "书源未命名")
             Room.bookSource().isInstalled(bookSource.url) -> mapOf("message" to "书源已安装，无法覆盖")
-            else -> Room.bookSource().install(BookSource(0, bookSource.name, bookSource.url, bookSource.version, !bookSource.rank.isNullOrEmpty(), bookSource.auth != null, EMPTY,  0F, json)).let {
+            else -> Room.bookSource().install(BookSource(0, bookSource.name, bookSource.url, bookSource.version, !bookSource.rank.isNullOrEmpty(), bookSource.auth != null, EMPTY,  "json", json)).let {
+                //todo 支持安装js书源
                 if (!bookSource.rank.isNullOrEmpty()) {
                     Room.bookRank().insert(BookRank(bookSource.url, bookSource.name))
                 }
@@ -142,7 +164,8 @@ class AirPlayService : Service(), Server.ServerListener {
                     if (catalog.isEmpty()) {
                         mapOf("detail" to detail, "catalog" to "无结果").toJson(true)
                     } else {
-                        val content = bookSourceParser!!.findContent(catalog[minOf(5, catalog.size)].url)
+                        val chapter = catalog[minOf(5, catalog.size)]
+                        val content = bookSourceParser!!.findContent(chapter.name, chapter.url)
                         mapOf("detail" to detail, "chapter" to catalog[minOf(5, catalog.size)], "content" to content).toJson(true)
                     }
                 }
@@ -193,7 +216,7 @@ class AirPlayService : Service(), Server.ServerListener {
     @PostMapping("/dev/debug/chapter")
     fun debugChapter(@RequestBody json: String) = try {
         if (bookSourceParser != null) {
-            mapOf("content" to bookSourceParser?.findContent((json.fromJson() as cn.lightink.reader.module.booksource.Chapter).url)).toJson(true)
+            mapOf("content" to bookSourceParser?.findContent("",(json.fromJson() as cn.lightink.reader.module.booksource.Chapter).url)).toJson(true)
         } else {
             mapOf("message" to "请先调用/dev/debug设置调试书源").toJson(true)
         }
@@ -204,9 +227,9 @@ class AirPlayService : Service(), Server.ServerListener {
     @GetMapping("/dev/debug/rank")
     fun debugRank() = try {
         if (bookSourceParser != null) {
-            if (bookSourceParser?.bookSource?.rank?.isNotEmpty() == true) {
+            if (bookSourceParser?.bookSource?.json?.rank?.isNotEmpty() == true) {
                 val results = mutableMapOf<String, List<SearchMetadata>>()
-                bookSourceParser!!.bookSource.rank.forEach { rank ->
+                bookSourceParser!!.bookSource.json.rank.forEach { rank ->
                     var url = rank.url
                     if (rank.page > -1) url = url.replace("\${page}", rank.page.toString())
                     if (rank.categories.isNotEmpty()) url = url.replace("\${key}", rank.categories.first().key)

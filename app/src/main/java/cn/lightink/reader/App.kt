@@ -3,6 +3,7 @@ package cn.lightink.reader
 import android.app.Application
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
+import cn.lightink.reader.transcode.DependenciesManager
 import cn.lightink.reader.module.*
 import cn.lightink.reader.net.Http
 import com.blankj.ALog
@@ -55,6 +56,8 @@ class App : Application() {
         FontModule.attach(this)
         //配置通知渠道
         NotificationHelper.createNotificationChannels(applicationContext)
+        //初始化js
+        DependenciesManager.initialize(this)
     }
 
     /**

@@ -2,6 +2,7 @@ package cn.lightink.reader.model
 
 import androidx.paging.DataSource
 import androidx.room.*
+import cn.lightink.reader.transcode.JavaScriptTranscoder
 import cn.lightink.reader.module.booksource.BookSourceJson
 import com.google.gson.Gson
 
@@ -22,16 +23,19 @@ import com.google.gson.Gson
  * @param content       内容
  */
 @Entity
-data class BookSource(val id: Int, var name: String, @PrimaryKey val url: String, var version: Int, var rank: Boolean, var account: Boolean, var owner: String, var score: Float, var content: String, var frequency: Int = 0) {
+data class BookSource(val id: Int, var name: String, @PrimaryKey val url: String, var version: Int, var rank: Boolean, var account: Boolean, var owner: String, var type: String, var content: String, var frequency: Int = 0) {
 
     val json: BookSourceJson
-        get() = Gson().fromJson(content, BookSourceJson::class.java)
+        get() = Gson().fromJson(content, BookSourceJson::class.java)!!
+
+    val js: JavaScriptTranscoder
+        get() = JavaScriptTranscoder(url, content)
 
     val author: String
-        get() = "${if (-1 > -1) owner else "privacy"}\u2000-\u2000$url" //todo
+        get() = "${if (-1 > -1) owner else "privacy"}\u2000-\u2000$url\u2000-\u2000$type" //todo
 
     fun sameTo(bookSource: BookSource): Boolean {
-        if (name == bookSource.name && version == bookSource.version && rank == bookSource.rank && account == bookSource.account && owner == bookSource.owner && score == bookSource.score) {
+        if (name == bookSource.name && version == bookSource.version && rank == bookSource.rank && account == bookSource.account && owner == bookSource.owner && type == type) {
             return true
         }
         name = bookSource.name
@@ -39,7 +43,7 @@ data class BookSource(val id: Int, var name: String, @PrimaryKey val url: String
         rank = bookSource.rank
         account = bookSource.account
         owner = bookSource.owner
-        score = bookSource.score
+        type = bookSource.type
         if (bookSource.content.isNotBlank()) {
             content = bookSource.content
         }

@@ -2,10 +2,12 @@ package cn.lightink.reader.module.booksource
 
 import android.net.Uri
 import android.util.Base64
+import android.util.Log
 import android.webkit.URLUtil
 import androidx.core.text.HtmlCompat
 import cn.lightink.reader.ktx.*
 import cn.lightink.reader.model.Book
+import cn.lightink.reader.model.BookSource
 import cn.lightink.reader.module.*
 import cn.lightink.reader.net.Http
 import com.google.gson.JsonArray
@@ -25,7 +27,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.PatternSyntaxException
 
-class BookSourceParser(val bookSource: BookSourceJson) {
+class BookSourceParser(val bookSource: BookSource) {
 
     private val dateFormat by lazy { SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINESE) }
 
@@ -33,46 +35,70 @@ class BookSourceParser(val bookSource: BookSourceJson) {
      * 搜索
      */
     fun search(key: String): List<SearchMetadata> {
-        val url = bookSource.search.url.replace("\${key}", key.encode(bookSource.search.charset))
-        val response = BookSourceInterpreter.execute(url, bookSource.auth) ?: return emptyList()
-        val results = findList(response, bookSource.search.list).map { findSearchMetadata(it) }
-        if (results.isNullOrEmpty()) {
-            val metadata = findDetailMetadata(response.url, response)
-            return if (metadata.name.contains(key, true) || metadata.author.contains(key, true)) listOf(metadata.toSearchMetadata()) else emptyList()
+        if (bookSource.type == "js") {
+            try {
+                return bookSource.js.search(key).map { t ->
+                    SearchMetadata(t.name, t.author, t.cover, "", t.detail)
+                }
+            } catch (e: Exception) {
+                Log.w("BookSourceParser", "search error, key: $key, bookSource: ${bookSource.url}", e)
+            }
+        } else {
+            val url = bookSource.json.search.url.replace("\${key}", key.encode(bookSource.json.search.charset))
+            val response = BookSourceInterpreter.execute(url, bookSource.json.auth) ?: return emptyList()
+            val results = findList(response, bookSource.json.search.list).map { findSearchMetadata(it) }
+            if (results.isNullOrEmpty()) {
+                val metadata = findDetailMetadata(response.url, response)
+                return if (metadata.name.contains(key, true) || metadata.author.contains(key, true)) listOf(metadata.toSearchMetadata()) else emptyList()
+            }
+            return results.filter { it.name.contains(key, true) || it.author.contains(key, true) }
         }
-        return results.filter { it.name.contains(key, true) || it.author.contains(key, true) }
+        return emptyList()
     }
 
     /**
      * 详情
      */
     fun findDetail(metadata: SearchMetadata): DetailMetadata? {
-        val response = BookSourceInterpreter.execute(metadata.detail, bookSource.auth) ?: return null
-        val detail = findDetailMetadata(metadata.detail, response)
-        if (detail.name.isBlank()) detail.name = metadata.name
-        if (detail.author.isBlank()) detail.author = metadata.author
-        if (detail.cover.isBlank()) detail.cover = metadata.cover
-        if (detail.summary.isBlank()) detail.summary = metadata.summary
-        return detail
+        if (bookSource.type == "js") {
+            val r = bookSource.js.detail(metadata.detail)
+            if (r != null) {
+                return DetailMetadata(metadata.name, metadata.author, metadata.cover, r.summary, r.status, r.update, r.lastChapter, metadata.detail, r.catalog);
+            }
+        } else {
+            val response = BookSourceInterpreter.execute(metadata.detail, bookSource.json.auth) ?: return null
+            val detail = findDetailMetadata(metadata.detail, response)
+            if (detail.name.isBlank()) detail.name = metadata.name
+            if (detail.author.isBlank()) detail.author = metadata.author
+            if (detail.cover.isBlank()) detail.cover = metadata.cover
+            if (detail.summary.isBlank()) detail.summary = metadata.summary
+            return detail
+        }
+        return null
     }
 
     /**
      * 目录
      */
     fun findCatalog(metadata: DetailMetadata, chapters: MutableList<BookSourceResponse> = mutableListOf(), urls: MutableList<String> = mutableListOf()): List<Chapter> {
-        val response = if (metadata.catalog is BookSourceResponse) metadata.catalog as BookSourceResponse else {
-            urls.add(metadata.catalog as String)
-            BookSourceInterpreter.execute(metadata.catalog as String, bookSource.auth) ?: return emptyList()
-        }
-        chapters.addAll(findList(response, bookSource.catalog.list))
-        //检查下一页
-        if (bookSource.catalog.page.isNotBlank()) {
-            val page = findValue(response, bookSource.catalog.page, true)
-            if (URLUtil.isNetworkUrl(page) && !urls.contains(page)) {
-                return findCatalog(metadata.copy().apply { catalog = page }, chapters, urls)
+        if (bookSource.type == "js") {
+            return bookSource.js.catalog(metadata.catalog.toString())?.map { Chapter(it.name, it.url, it.vip) }.orEmpty()
+        } else {
+            val response = if (metadata.catalog is BookSourceResponse) metadata.catalog as BookSourceResponse else {
+                urls.add(metadata.catalog as String)
+                BookSourceInterpreter.execute(metadata.catalog as String, bookSource.json.auth) ?: return emptyList()
             }
+            chapters.addAll(findList(response, bookSource.json.catalog.list))
+            //检查下一页
+            if (bookSource.json.catalog.page.isNotBlank()) {
+                val page = findValue(response, bookSource.json.catalog.page, true)
+                if (URLUtil.isNetworkUrl(page) && !urls.contains(page)) {
+                    return findCatalog(metadata.copy().apply { catalog = page }, chapters, urls)
+                }
+            }
+            return findBooklet(chapters)
         }
-        return findBooklet(chapters)
+        return emptyList()
     }
 
     /**
@@ -82,12 +108,12 @@ class BookSourceParser(val bookSource: BookSourceJson) {
      */
     private fun findBooklet(list: MutableList<BookSourceResponse>): List<Chapter> {
         val chapters = mutableListOf<Chapter>()
-        list.let { if (bookSource.catalog.orderBy % 2 == 0) it.asReversed() else it }.forEach { item ->
-            if (bookSource.catalog.booklet != null) {
+        list.let { if (bookSource.json.catalog.orderBy % 2 == 0) it.asReversed() else it }.forEach { item ->
+            if (bookSource.json.catalog.booklet != null) {
                 //存在分卷
-                val name = findValue(item, bookSource.catalog.booklet.name).singleLine()
+                val name = findValue(item, bookSource.json.catalog.booklet!!.name).singleLine()
                 val booklet = Chapter(if (name.isNotBlank()) name else "正文", EMPTY, false)
-                findList(item, bookSource.catalog.booklet.list).let { if (bookSource.catalog.orderBy !in 1..2) it.asReversed() else it }.forEach { child ->
+                findList(item, bookSource.json.catalog.booklet!!.list).let { if (bookSource.json.catalog.orderBy !in 1..2) it.asReversed() else it }.forEach { child ->
                     findChapter(child, true, chapters)
                 }
                 chapters.add(0, booklet)
@@ -106,10 +132,10 @@ class BookSourceParser(val bookSource: BookSourceJson) {
      * @param chapters  章节列表
      */
     private fun findChapter(response: BookSourceResponse, useLevel: Boolean, chapters: MutableList<Chapter>) {
-        val name = findValue(response, bookSource.catalog.name)
+        val name = findValue(response, bookSource.json.catalog.name)
         //章节名必不为空
         if (name.isNotBlank()) {
-            val chapter = Chapter(name, findValue(response, bookSource.catalog.chapter, true), useLevel)
+            val chapter = Chapter(name, findValue(response, bookSource.json.catalog.chapter, true), useLevel)
             //章节链接必不为空且不能存在重复章节
             if (chapter.url.isNotBlank() && !chapters.contains(chapter)) {
                 chapters.add(0, chapter)
@@ -125,8 +151,7 @@ class BookSourceParser(val bookSource: BookSourceJson) {
         var searchMetadata = list.firstOrNull { it.name == book.name && it.author == book.author }
         if (searchMetadata == null) searchMetadata = list.firstOrNull { it.name == book.name } ?: return null
         //读取详情
-        val response = BookSourceInterpreter.execute(searchMetadata.detail, bookSource.auth) ?: return null
-        val metadata = findDetailMetadata(searchMetadata.detail, response)
+        val metadata = findDetail(searchMetadata) ?: return null
         //读取目录
         val catalog = findCatalog(metadata)
         metadata.lastChapter = catalog.lastOrNull()?.name.orEmpty()
@@ -137,45 +162,49 @@ class BookSourceParser(val bookSource: BookSourceJson) {
     /**
      * 正文
      */
-    fun findContent(url: String, output: String = EMPTY, buffer: StringBuilder = StringBuilder()): String {
-        val response = BookSourceInterpreter.execute(url, bookSource.auth) ?: return GET_FAILED_NET_THROWABLE
-        //vip章节
-        if (bookSource.auth?.vip?.isNotBlank() == true && findValue(response, bookSource.auth.vip) == "true") {
-            //未购买
-            if (bookSource.auth.buy.isBlank() || findValue(response, bookSource.auth.buy) != "true") {
-                return if (verify()) GET_FAILED_INVALID_AUTH_BUY else GET_FAILED_INVALID_AUTH
+    fun findContent(title: String = "", url: String, output: String = EMPTY, buffer: StringBuilder = StringBuilder()): String {
+        if (bookSource.type == "js") {
+           return bookSource.js.chapter(cn.lightink.reader.transcode.entity.Chapter(title,url))
+        } else {
+            val response = BookSourceInterpreter.execute(url, bookSource.json.auth) ?: return GET_FAILED_NET_THROWABLE
+            //vip章节
+            if (bookSource.json.auth?.vip?.isNotBlank() == true && findValue(response, bookSource.json.auth!!.vip) == "true") {
+                //未购买
+                if (bookSource.json.auth!!.buy.isBlank() || findValue(response, bookSource.json.auth!!.buy) != "true") {
+                    return if (verify()) GET_FAILED_INVALID_AUTH_BUY else GET_FAILED_INVALID_AUTH
+                }
             }
-        }
-        val content = when (response.body) {
-            is Document, is Element -> findHtmlContent(response, if (bookSource.chapter.content.isNotBlank()) bookSource.chapter.content else BODY, output)
-            is String -> if (response.body.isJson()) {
-                findJsonContent(response, output)
-            } else {
-                response.body.toString()
+            val content = when (response.body) {
+                is Document, is Element -> findHtmlContent(response, if (bookSource.json.chapter.content.isNotBlank()) bookSource.json.chapter.content else BODY, output)
+                is String -> if (response.body.isJson()) {
+                    findJsonContent(response, output)
+                } else {
+                    response.body.toString()
+                }
+                else -> response.body.toString()
             }
-            else -> response.body.toString()
-        }
-        buffer.append(content)
-        //检查下一页
-        if (bookSource.chapter.page.isNotBlank() && content.isNotBlank()) {
-            val page = findValue(response, bookSource.chapter.page, true)
-            if (URLUtil.isNetworkUrl(page) && page != response.url && page != url) {
-                return findContent(page, output, buffer)
+            buffer.append(content)
+            //检查下一页
+            if (bookSource.json.chapter.page.isNotBlank() && content.isNotBlank()) {
+                val page = findValue(response, bookSource.json.chapter.page, true)
+                if (URLUtil.isNetworkUrl(page) && page != response.url && page != url) {
+                    return findContent("",page, output, buffer)
+                }
             }
-        }
-        //检查净化列表
-        var markdown = buffer.toString()
-        try {
-            bookSource.chapter.purify.forEach { regex ->
-                markdown = markdown.replace(Regex(regex), EMPTY)
+            //检查净化列表
+            var markdown = buffer.toString()
+            try {
+                bookSource.json.chapter.purify.forEach { regex ->
+                    markdown = markdown.replace(Regex(regex), EMPTY)
+                }
+            } catch (e: PatternSyntaxException) {
+                //忽略可能存在错误的正则表达式
             }
-        } catch (e: PatternSyntaxException) {
-            //忽略可能存在错误的正则表达式
+            //格式化内容
+            markdown = markdown.replace("""\n+(\s|\u3000)+""".toRegex(), "\n")
+            markdown = markdown.replace("""\n+""".toRegex(), "\n")
+            return markdown.trim()
         }
-        //格式化内容
-        markdown = markdown.replace("""\n+(\s|\u3000)+""".toRegex(), "\n")
-        markdown = markdown.replace("""\n+""".toRegex(), "\n")
-        return markdown.trim()
     }
 
     /**
@@ -183,7 +212,7 @@ class BookSourceParser(val bookSource: BookSourceJson) {
      */
     fun checkUpdate(book: Book): String? {
         //读取详情
-        val response = BookSourceInterpreter.execute(book.link, bookSource.auth) ?: return null
+        val response = BookSourceInterpreter.execute(book.link, bookSource.json.auth) ?: return null
         val metadata = findDetailMetadata(book.link, response)
         //完结
         if (book.state != BOOK_STATE_END && metadata.status.contains("完")) {
@@ -219,32 +248,41 @@ class BookSourceParser(val bookSource: BookSourceJson) {
      * 排行榜
      */
     fun queryRank(url: String, rank: BookSourceJson.Rank): List<SearchMetadata> {
-        val response = BookSourceInterpreter.execute(url, bookSource.auth) ?: return emptyList()
-        return findList(response, if (rank.list.isNotBlank()) rank.list else bookSource.search.list).map { findRankMetadata(it, rank) }
+        val response = BookSourceInterpreter.execute(url, bookSource.json.auth) ?: return emptyList()
+        return findList(response, if (rank.list.isNotBlank()) rank.list else bookSource.json.search.list).map { findRankMetadata(it, rank) }
     }
 
     /**
      * 搜索封面
      */
     fun searchCover(bookName: String): String {
-        val url = bookSource.search.url.replace("\${key}", bookName.encode(bookSource.search.charset))
-        val response = BookSourceInterpreter.execute(url, bookSource.auth) ?: return EMPTY
-        val result = findList(response, bookSource.search.list).map { findSearchMetadata(it) }
-        //针对搜索结果仅一个自动跳转详情的情况
-        if (result.isNullOrEmpty()) {
-            val metadata = findDetailMetadata(response.url, response)
-            return if (metadata.name == bookName) metadata.cover else EMPTY
+        if (bookSource.type == "js") {
+            try {
+                return bookSource.js.search(bookName).firstOrNull { it.name == bookName }?.cover ?: EMPTY
+            } catch (e: Exception) {
+                Log.w("BookSourceParser", "searchCover error, bookName: $bookName, bookSource: ${bookSource.url}", e)
+            }
+        } else {
+            val url = bookSource.json.search.url.replace("\${key}", bookName.encode(bookSource.json.search.charset))
+            val response = BookSourceInterpreter.execute(url, bookSource.json.auth) ?: return EMPTY
+            val result = findList(response, bookSource.json.search.list).map { findSearchMetadata(it) }
+            //针对搜索结果仅一个自动跳转详情的情况
+            if (result.isNullOrEmpty()) {
+                val metadata = findDetailMetadata(response.url, response)
+                return if (metadata.name == bookName) metadata.cover else EMPTY
+            }
+            return result.firstOrNull { it.name == bookName }?.cover ?: EMPTY
         }
-        return result.firstOrNull { it.name == bookName }?.cover ?: EMPTY
+        return EMPTY;
     }
 
     /**
      * 验证登录
      */
     fun verify(): Boolean {
-        if (bookSource.auth?.verify == null) return false
-        val response = BookSourceInterpreter.execute(bookSource.auth.verify, bookSource.auth) ?: return false
-        return findValue(response, bookSource.auth.logged) == "true"
+        if (bookSource.json.auth?.verify == null) return false
+        val response = BookSourceInterpreter.execute(bookSource.json.auth!!.verify, bookSource.json.auth) ?: return false
+        return findValue(response, bookSource.json.auth!!.logged) == "true"
     }
     /*******************************************************************************************************************************
      * 查值
@@ -253,33 +291,33 @@ class BookSourceParser(val bookSource: BookSourceJson) {
      * 查找搜索结果
      */
     private fun findSearchMetadata(response: BookSourceResponse) = SearchMetadata(
-            name = HtmlCompat.fromHtml(findValue(response, bookSource.search.name), HtmlCompat.FROM_HTML_MODE_LEGACY).toString(),
-            author = findValue(response, bookSource.search.author),
-            cover = findValue(response, bookSource.search.cover, true),
-            summary = findValue(response, bookSource.search.summary),
-            detail = findValue(response, bookSource.search.detail, true)
+        name = HtmlCompat.fromHtml(findValue(response, bookSource.json.search.name), HtmlCompat.FROM_HTML_MODE_LEGACY).toString(),
+        author = findValue(response, bookSource.json.search.author),
+        cover = findValue(response, bookSource.json.search.cover, true),
+        summary = findValue(response, bookSource.json.search.summary),
+        detail = findValue(response, bookSource.json.search.detail, true)
     )
 
     private fun findDetailMetadata(url: String, response: BookSourceResponse) = DetailMetadata(
-            name = findValue(response, bookSource.detail.name),
-            author = findValue(response, bookSource.detail.author),
-            cover = findValue(response, bookSource.detail.cover, true),
-            summary = findValue(response, bookSource.detail.summary),
-            status = findValue(response, bookSource.detail.status),
-            update = findValue(response, bookSource.detail.update).let {
-                if (it.toLongOrNull() != null) dateFormat.format(if (it.length == 10) it.toLong() * 1000 else it.toLong()) else it
-            },
-            lastChapter = findValue(response, bookSource.detail.lastChapter),
-            url = url,
-            catalog = if (bookSource.detail.catalog.isNotBlank()) findValue(response, bookSource.detail.catalog, true) else response
+        name = findValue(response, bookSource.json.detail.name),
+        author = findValue(response, bookSource.json.detail.author),
+        cover = findValue(response, bookSource.json.detail.cover, true),
+        summary = findValue(response, bookSource.json.detail.summary),
+        status = findValue(response, bookSource.json.detail.status),
+        update = findValue(response, bookSource.json.detail.update).let {
+            if (it.toLongOrNull() != null) dateFormat.format(if (it.length == 10) it.toLong() * 1000 else it.toLong()) else it
+        },
+        lastChapter = findValue(response, bookSource.json.detail.lastChapter),
+        url = url,
+        catalog = if (bookSource.json.detail.catalog.isNotBlank()) findValue(response, bookSource.json.detail.catalog, true) else response
     )
 
     private fun findRankMetadata(response: BookSourceResponse, rank: BookSourceJson.Rank) = SearchMetadata(
-            name = HtmlCompat.fromHtml(findValue(response, if (rank.name.isNotBlank()) rank.name else bookSource.search.name), HtmlCompat.FROM_HTML_MODE_LEGACY).toString(),
-            author = findValue(response, if (rank.author.isNotBlank()) rank.author else bookSource.search.author),
-            cover = findValue(response, if (rank.cover.isNotBlank()) rank.cover else bookSource.search.cover, true),
-            summary = findValue(response, if (rank.summary.isNotBlank()) rank.summary else bookSource.search.summary),
-            detail = findValue(response, if (rank.detail.isNotBlank()) rank.detail else bookSource.search.detail, true)
+        name = HtmlCompat.fromHtml(findValue(response, if (rank.name.isNotBlank()) rank.name else bookSource.json.search.name), HtmlCompat.FROM_HTML_MODE_LEGACY).toString(),
+        author = findValue(response, if (rank.author.isNotBlank()) rank.author else bookSource.json.search.author),
+        cover = findValue(response, if (rank.cover.isNotBlank()) rank.cover else bookSource.json.search.cover, true),
+        summary = findValue(response, if (rank.summary.isNotBlank()) rank.summary else bookSource.json.search.summary),
+        detail = findValue(response, if (rank.detail.isNotBlank()) rank.detail else bookSource.json.search.detail, true)
     )
 
     private fun findValue(response: BookSourceResponse, query: String, isHref: Boolean = false): String {
@@ -428,8 +466,8 @@ class BookSourceParser(val bookSource: BookSourceJson) {
      * @param output    输出路径 用于保存图片
      */
     private fun findJsonContent(response: BookSourceResponse, output: String): String {
-        var content = if (bookSource.chapter.content.isNotBlank()) {
-            findValueByJson(response, Query.build(bookSource.chapter.content), false)
+        var content = if (bookSource.json.chapter.content.isNotBlank()) {
+            findValueByJson(response, Query.build(bookSource.json.chapter.content), false)
         } else response.body as String
         if (content.isHtml()) {
             content = findHtmlContent(BookSourceResponse(response.url, Jsoup.parseBodyFragment(content)), BODY, output)
@@ -463,7 +501,7 @@ class BookSourceParser(val bookSource: BookSourceJson) {
      * @param output    输出路径 用于保存图片
      */
     private fun findHtmlContent(response: BookSourceResponse, query: String, output: String): String {
-        val filters = bookSource.chapter.filter.map { if (it.startsWith("@")) it.removePrefix("@") else findValue(response, it) }
+        val filters = bookSource.json.chapter.filter.map { if (it.startsWith("@")) it.removePrefix("@") else findValue(response, it) }
         val buffer = StringBuilder()
         try {
             queryList(response.body as Element, query).forEach { element ->

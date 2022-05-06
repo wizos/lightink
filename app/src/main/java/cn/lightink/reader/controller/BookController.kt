@@ -11,12 +11,10 @@ import androidx.lifecycle.viewModelScope
 import cn.lightink.reader.BOOK_PATH
 import cn.lightink.reader.ktx.only
 import cn.lightink.reader.ktx.toJson
-import cn.lightink.reader.model.Book
-import cn.lightink.reader.model.Bookshelf
-import cn.lightink.reader.model.SearchBook
-import cn.lightink.reader.model.SearchResult
+import cn.lightink.reader.model.*
 import cn.lightink.reader.module.*
 import cn.lightink.reader.module.booksource.*
+import cn.lightink.reader.module.booksource.Chapter
 import cn.lightink.reader.net.Http
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +30,7 @@ import java.io.File
 class BookController : ViewModel() {
 
     private val bookDetailLive = MutableLiveData<DetailMetadata>()
-    private var bookSource: BookSourceJson? = null
+    private var bookSource: BookSource? = null
 
     val catalogLive = MutableLiveData<List<Chapter>>()
 
@@ -48,7 +46,7 @@ class BookController : ViewModel() {
      */
     fun queryBookDetail(result: SearchResult): LiveData<DetailMetadata> {
         viewModelScope.launch(Dispatchers.IO) {
-            bookSource = result.source.json
+            bookSource = result.source
             queryBookDetail(result.metadata)
         }
         return bookDetailLive
@@ -70,8 +68,8 @@ class BookController : ViewModel() {
      * 将网络图书转为本地图书
      * @param bookshelf     指定书架 无数据就是预览模式
      */
-    fun publish(baseInfo: SearchBook?, bookshelf: Bookshelf? = null): LiveData<Book> {
-        val liveData = MutableLiveData<Book>()
+    fun publish(baseInfo: SearchBook?, bookshelf: Bookshelf? = null): LiveData<Book?> {
+        val liveData = MutableLiveData<Book?>()
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 //章节列表
@@ -140,7 +138,7 @@ class BookController : ViewModel() {
             }
             Room.bookSource().getAllImmediately().forEach { source ->
                 launch {
-                    val cover = BookSourceParser(source.json).searchCover(bookName)
+                    val cover = BookSourceParser(source).searchCover(bookName)
                     if (URLUtil.isNetworkUrl(cover)) result.postValue(listOf(cover))
                 }
             }

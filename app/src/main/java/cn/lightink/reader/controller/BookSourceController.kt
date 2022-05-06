@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.toLiveData
+import cn.lightink.reader.transcode.JavaScriptTranscoder
 import cn.lightink.reader.ktx.toJson
 import cn.lightink.reader.model.BookRank
 import cn.lightink.reader.model.BookSource
@@ -32,7 +33,7 @@ class BookSourceController : ViewModel() {
     fun verify(bookSource: BookSource): LiveData<Boolean> {
         val result = MutableLiveData<Boolean>()
         viewModelScope.launch(Dispatchers.IO) {
-            result.postValue(BookSourceParser(bookSource.json).verify())
+            result.postValue(BookSourceParser(bookSource).verify())
         }
         return result
     }
@@ -61,28 +62,75 @@ class BookSourceController : ViewModel() {
     }
 
     private suspend fun verifyBookSource(name: String, baseUrl: String) {
-        val url = "${baseUrl.substringBeforeLast("/")}/sources/$name.json"
-        val response = Http.get<BookSourceJson>(url)
-        if (response.isSuccessful && response.data != null && !Room.bookSource().isInstalled(response.data.url)) {
-            val bookSource = Room.bookSource().getLocalInstalled(response.data.url)
-            if (bookSource != null) {
-                //已安装需要更新版本
-                if (bookSource.version < response.data.version) {
-                    if (!bookSource.rank && !response.data.rank.isNullOrEmpty() && !Room.bookRank().isExist(response.data.url)) {
+        if (name.endsWith(".js")) {
+            val url = "${baseUrl.substringBeforeLast("/")}/sources/$name"
+            val response = Http.get<String>(url)
+            if (response.isSuccessful && response.data != null) {
+                val javaScript = response.data
+                val info = JavaScriptTranscoder(name, javaScript).bookSource() ?: return
+                val bookSource = Room.bookSource().getLocalInstalled(info.url)
+                if (bookSource != null) {
+                    //已安装需要更新版本
+                    if (bookSource.version < info.version) {
+                        bookSource.name = info.name
+                        bookSource.version = info.version
+                        bookSource.rank = false
+                        bookSource.account = false
+                        bookSource.content = javaScript
+                        Room.bookSource().update(bookSource)
+                    }
+                } else {
+                    //未安装
+                    Room.bookSource().install(
+                        BookSource(
+                            0, info.name,
+                            info.url,
+                            info.version,
+                            false,
+                            false,
+                            baseUrl,
+                            "js",
+                            javaScript
+                        )
+                    )
+                }
+            }
+        } else {
+            val url = "${baseUrl.substringBeforeLast("/")}/sources/$name.json"
+            val response = Http.get<BookSourceJson>(url)
+            if (response.isSuccessful && response.data != null && !Room.bookSource().isInstalled(response.data.url)) {
+                val bookSource = Room.bookSource().getLocalInstalled(response.data.url)
+                if (bookSource != null) {
+                    //已安装需要更新版本
+                    if (bookSource.version < response.data.version) {
+                        if (!bookSource.rank && !response.data.rank.isNullOrEmpty() && !Room.bookRank().isExist(response.data.url)) {
+                            Room.bookRank().insert(BookRank(response.data.url, response.data.name))
+                        }
+                        bookSource.name = response.data.name
+                        bookSource.version = response.data.version
+                        bookSource.rank = response.data.rank.isNullOrEmpty()
+                        bookSource.account = response.data.auth != null
+                        bookSource.content = response.data.toJson()
+                        Room.bookSource().update(bookSource)
+                    }
+                } else {
+                    //未安装
+                    Room.bookSource().install(
+                        BookSource(
+                            0,
+                            response.data.name,
+                            response.data.url,
+                            response.data.version,
+                            !response.data.rank.isNullOrEmpty(),
+                            response.data.auth != null,
+                            baseUrl,
+                            "json",
+                            response.data.toJson()
+                        )
+                    )
+                    if (!response.data.rank.isNullOrEmpty() && !Room.bookRank().isExist(response.data.url)) {
                         Room.bookRank().insert(BookRank(response.data.url, response.data.name))
                     }
-                    bookSource.name = response.data.name
-                    bookSource.version = response.data.version
-                    bookSource.rank = response.data.rank.isNullOrEmpty()
-                    bookSource.account = response.data.auth != null
-                    bookSource.content = response.data.toJson()
-                    Room.bookSource().update(bookSource)
-                }
-            } else {
-                //未安装
-                Room.bookSource().install(BookSource(0, response.data.name, response.data.url, response.data.version, !response.data.rank.isNullOrEmpty(), response.data.auth != null, baseUrl, 0F, response.data.toJson()))
-                if (!response.data.rank.isNullOrEmpty() && !Room.bookRank().isExist(response.data.url)) {
-                    Room.bookRank().insert(BookRank(response.data.url, response.data.name))
                 }
             }
         }

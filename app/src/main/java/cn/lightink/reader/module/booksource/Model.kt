@@ -1,6 +1,7 @@
 package cn.lightink.reader.module.booksource
 
 import cn.lightink.reader.ktx.md5
+import cn.lightink.reader.model.BookSource
 import cn.lightink.reader.model.MPMetadata
 import cn.lightink.reader.module.BOOK_STATE_END
 import cn.lightink.reader.module.BOOK_STATE_IDLE
@@ -30,7 +31,7 @@ data class BookSourceResponse(val url: String, val body: Any)
 /**
  * 换源搜索结果
  */
-data class BookSourceSearchResponse(val book: DetailMetadata, val source: BookSourceJson, val chapters: List<Chapter>)
+data class BookSourceSearchResponse(val book: DetailMetadata, val source: BookSource, val chapters: List<Chapter>)
 
 data class SearchMetadata(var name: String, var author: String, var cover: String, var summary: String, var detail: String) {
     val objectId: String

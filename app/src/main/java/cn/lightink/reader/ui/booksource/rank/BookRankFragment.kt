@@ -27,10 +27,10 @@ import kotlinx.android.synthetic.main.item_simple_book.view.*
 class BookRankFragment : LifecycleFragment() {
 
     private val controller by lazy { ViewModelProvider(this)[BookRankController::class.java] }
-    private val bookRank by lazy { arguments!!.getParcelable<BookRank>(INTENT_BOOK_RANK)!! }
+    private val bookRank by lazy { arguments?.getParcelable<BookRank>(INTENT_BOOK_RANK)!! }
     private val bookSource by lazy { Room.bookSource().get(bookRank.url)!! }
     private val bookSourceJson by lazy { bookSource.json }
-    private val bookSourceParser by lazy { BookSourceParser(bookSourceJson) }
+    private val bookSourceParser by lazy { BookSourceParser(bookSource) }
     private var group: BookSourceJson.Rank? = null
     private var category: BookSourceJson.Category? = null
     private var page = -1
@@ -58,7 +58,7 @@ class BookRankFragment : LifecycleFragment() {
     }
 
     private fun showCategoryDialog() {
-        BottomSelectorDialog(activity!!, getString(R.string.select_category), group?.categories.orEmpty()) { it.value }.callback { selected ->
+        BottomSelectorDialog(requireActivity(), getString(R.string.select_category), group?.categories.orEmpty()) { it.value }.callback { selected ->
             if (category != selected) {
                 bookRank.apply { category = selected.key }
                 category = selected

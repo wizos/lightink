@@ -432,7 +432,7 @@ class ReaderController : ViewModel(), LifecycleObserver {
             //优先读取本地缓存
             file.exists() -> file.readText()
             //否则尝试从网络读取数据
-            else -> bookSource?.findContent(chapter.href, "${book.path}/$MP_FOLDER_IMAGES") ?: GET_FAILED_NET_THROWABLE
+            else -> bookSource?.findContent(chapter.title, chapter.href, "${book.path}/$MP_FOLDER_IMAGES") ?: GET_FAILED_NET_THROWABLE
         }
         if (content == GET_FAILED_NET_THROWABLE) return GET_FAILED_NET_THROWABLE
         if (content == GET_FAILED_INVALID_AUTH) return GET_FAILED_INVALID_AUTH
@@ -788,7 +788,7 @@ class ReaderController : ViewModel(), LifecycleObserver {
     /**
      * 当前正在使用的书源屏蔽列表
      */
-    fun getBookSourcePurifyList() = bookSource?.bookSource?.chapter?.purify ?: emptyList()
+    fun getBookSourcePurifyList() = bookSource?.bookSource?.json?.chapter?.purify ?: emptyList()
 
 
     /**
@@ -872,8 +872,8 @@ class ReaderController : ViewModel(), LifecycleObserver {
         val result = MutableLiveData<BookSourceSearchResponse?>()
         viewModelScope.launch {
             async(Dispatchers.IO) {
-                result.postValue(BookSourceSearchResponse(DetailMetadata(book.name, book.author, EMPTY, EMPTY, EMPTY, EMPTY, catalog.lastOrNull()?.title.orEmpty(), EMPTY, EMPTY), BookSourceJson(getBookSourceName(), "NONE", 0, BookSourceJson.Search()), listOf()))
-                Room.bookSource().getAllImmediately().filter { it.json.url != bookSource?.bookSource?.url }.map { BookSourceParser(it.json) }.forEach { source ->
+                result.postValue(BookSourceSearchResponse(DetailMetadata(book.name, book.author, EMPTY, EMPTY, EMPTY, EMPTY, catalog.lastOrNull()?.title.orEmpty(), EMPTY, EMPTY), bookSource!!.bookSource, listOf()))
+                Room.bookSource().getAllImmediately().filter { it.url != bookSource?.bookSource?.url }.map { BookSourceParser(it) }.forEach { source ->
                     launch {
                         source.findTheLastChapter(book)?.run { result.postValue(this) }
                     }

@@ -238,10 +238,12 @@ class BookDetailActivity : LifecycleActivity() {
         mBookDetailLoading.isVisible = true
         mBookDetailRead.visibility = View.INVISIBLE
         controller.publish(book).observe(this, Observer { book ->
-            mBookDetailLoading.isVisible = false
-            mBookDetailRead.isVisible = true
-            controller.catalogLive.value?.run { book.chapter = max(indexOf(chapter), 0) }
-            openBook(book)
+            if (book != null) {
+                mBookDetailLoading.isVisible = false
+                mBookDetailRead.isVisible = true
+                controller.catalogLive.value?.run { book.chapter = max(indexOf(chapter), 0) }
+                openBook(book)
+            }
         })
     }
 

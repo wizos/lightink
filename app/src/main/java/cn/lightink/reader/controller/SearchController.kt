@@ -59,7 +59,7 @@ class SearchController : ViewModel() {
                     //并发
                     launch {
                         val begin = System.currentTimeMillis()
-                        val list = BookSourceParser(source.json).search(key)
+                        val list = BookSourceParser(source).search(key)
                         //任务如果已取消就不再推送
                         if (isActive && list.isNotEmpty()) {
                             val speed = System.currentTimeMillis() - begin
