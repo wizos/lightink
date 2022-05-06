@@ -142,3 +142,9 @@ public static final int *;
 -keep class com.qiniu.**{*;}
 -keep class com.qiniu.**{public <init>();}
 -ignorewarnings
+
+#QuickJS
+-dontwarn com.hippo.quickjs.**
+-keep class com.hippo.quickjs.** {*;}
+
+-keep class cn.lightink.reader.transcode.** {*;}
