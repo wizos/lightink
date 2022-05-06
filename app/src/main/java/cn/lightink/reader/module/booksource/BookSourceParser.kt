@@ -212,8 +212,9 @@ class BookSourceParser(val bookSource: BookSource) {
      */
     fun checkUpdate(book: Book): String? {
         //读取详情
-        val response = BookSourceInterpreter.execute(book.link, bookSource.json.auth) ?: return null
-        val metadata = findDetailMetadata(book.link, response)
+        val metadata = findDetail(SearchMetadata(book.name,book.author,book.cover,"",book.link))?: return null
+//        val response = BookSourceInterpreter.execute(book.link, bookSource.json.auth) ?: return null
+//        val metadata = findDetailMetadata(book.link, response)
         //完结
         if (book.state != BOOK_STATE_END && metadata.status.contains("完")) {
             book.state = BOOK_STATE_END

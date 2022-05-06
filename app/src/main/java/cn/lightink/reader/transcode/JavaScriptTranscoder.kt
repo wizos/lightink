@@ -1,8 +1,6 @@
 package cn.lightink.reader.transcode
 
 import android.util.Log
-import cn.lightink.reader.transcode.ContentParser
-import cn.lightink.reader.transcode.NetworkBridge
 import cn.lightink.reader.transcode.NetworkBridge.castString
 import cn.lightink.reader.transcode.entity.*
 import cn.lightink.reader.transcode.ktx.decodeJson
