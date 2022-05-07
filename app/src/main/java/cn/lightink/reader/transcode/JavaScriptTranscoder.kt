@@ -34,10 +34,15 @@ class JavaScriptTranscoder(private val host: String, private val bookSource: Str
      * 搜索
      */
     fun search(key: String) = javaScript { context ->
-        val response = context.evaluate("search('$key');", filename, String::class.java)
-        val results = response.decodeJson<List<SearchResult>>()
-        return@javaScript results.filter {
-            it.author.isNotBlank() && (it.name.contains(key) || it.author.contains(key))
+        try {
+            val response = context.evaluate("search('$key');", filename, String::class.java)
+            val results = response.decodeJson<List<SearchResult>>()
+            return@javaScript results.filter {
+                it.author.isNotBlank() && (it.name.contains(key) || it.author.contains(key))
+            }
+        } catch (e: Exception) {
+            Log.w("JavaScriptTranscoder", "search error, key: $key, bookSource: $host", e)
+            return@javaScript null
         }
     }
 
@@ -45,24 +50,33 @@ class JavaScriptTranscoder(private val host: String, private val bookSource: Str
      * 详情
      */
     fun detail(url: String) = javaScript<BookDetail?> { context ->
-        val response = context.evaluate("detail('$url');", filename, String::class.java)
-        return@javaScript response.decodeJson<BookDetail>()
+        try {
+            val response = context.evaluate("detail('$url');", filename, String::class.java)
+            return@javaScript response.decodeJson<BookDetail>()
+        } catch (e: Exception) {
+            Log.w("JavaScriptTranscoder", "detail error, url: $url, bookSource: $host", e)
+            return@javaScript null
+        }
     }
 
     /**
      * 目录
      */
     fun catalog(url: String) = javaScript<List<Chapter>?> { context ->
-        val response = context.evaluate("catalog('$url');", filename, String::class.java)
-        return@javaScript response.decodeJson<List<Chapter>>()
+        try {
+            val response = context.evaluate("catalog('$url');", filename, String::class.java)
+            return@javaScript response.decodeJson<List<Chapter>>()
+        } catch (e: Exception) {
+            Log.w("JavaScriptTranscoder", "catalog error, url: $url, bookSource: $host", e)
+            return@javaScript null
+        }
     }
 
     /**
      * 章节
      */
     fun chapter(chapter: Chapter, output: File? = null) = javaScript<String> { context ->
-        try {
-//            if (chapter.url.isBlank()) return@javaScript "## ${chapter.name}"
+        try {//            if (chapter.url.isBlank()) return@javaScript "## ${chapter.name}"
             if (chapter.url.isBlank()) return@javaScript ""
             val response =
                 context.evaluate("chapter('${chapter.url}');", filename, JSValue::class.java)
@@ -70,11 +84,9 @@ class JavaScriptTranscoder(private val host: String, private val bookSource: Str
             val markdown = ContentParser.read(chapter.url, response, output)
 //            if (markdown.isNotBlank()) "## ${chapter.name}\n${markdown}" else ""
             if (markdown.isNotBlank()) markdown else ""
-        } catch (e: JSEvaluationException) {
-            if (e.message?.contains("code") == true) {
-                throw e.message.orEmpty().removePrefix("Throw:").decodeJson<TranscodeException>()
-            }
-            throw e
+        } catch (e: Exception) {
+            Log.w("JavaScriptTranscoder", "chapter content error, chapter: $chapter, bookSource: $host", e)
+            return@javaScript e.message ?: ""
         }
     }
 

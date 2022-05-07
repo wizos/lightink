@@ -70,9 +70,11 @@ object Room {
     fun bookRank() = database.bookRank()
 
     fun folder() = database.folder()
+
+    fun thirdAccount() = database.thirdAccount();
 }
 
-@Database(version = 1, entities = [Book::class, Bookshelf::class, Bookmark::class, Statistics::class, BookRecord::class, BookSource::class, Theme::class, FeedGroup::class, Feed::class, Flow::class, SearchHistory::class, BookFileLink::class, BookSynchronize::class, BookRank::class, Folder::class], exportSchema = false)
+@Database(version = 1, entities = [Book::class, Bookshelf::class, Bookmark::class, Statistics::class, BookRecord::class, BookSource::class, Theme::class, FeedGroup::class, Feed::class, Flow::class, SearchHistory::class, BookFileLink::class, BookSynchronize::class, BookRank::class, Folder::class, ThirdAccount::class], exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun book(): BookDao
     abstract fun bookshelf(): BookshelfDao
@@ -89,4 +91,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun bookmark(): BookmarkDao
     abstract fun bookRank(): BookRankDao
     abstract fun folder(): FolderDao
+    abstract fun thirdAccount(): ThirdAccountDao
+
 }

@@ -348,13 +348,13 @@ object NetworkBridge {
             })
         runtime.evaluate(
             "var localStorage = {\n" +
-                "  getItem: function(key) { return LOCAL_STORAGE(0, key) },\n" +
-                "  setItem: function(key, value) { LOCAL_STORAGE(1, key, value) },\n" +
-                "  removeItem: function(key) { return LOCAL_STORAGE(2, key) },\n" +
-                "  clear: function() { return LOCAL_STORAGE(3) },\n" +
-                "  key: LOCAL_STORAGE(4),\n" +
-                "  length: LOCAL_STORAGE(5),\n" +
-                "}", filename
+                    "  getItem: function(key) { return LOCAL_STORAGE(0, key) },\n" +
+                    "  setItem: function(key, value) { LOCAL_STORAGE(1, key, value) },\n" +
+                    "  removeItem: function(key) { return LOCAL_STORAGE(2, key) },\n" +
+                    "  clear: function() { return LOCAL_STORAGE(3) },\n" +
+                    "  key: LOCAL_STORAGE(4),\n" +
+                    "  length: LOCAL_STORAGE(5),\n" +
+                    "}", filename
         )
         //构建GET/PUT/POST/DELETE/PATCH/HEAD/OPTIONS/TRACE方法
         Connection.Method.values().forEach { method ->
@@ -504,7 +504,7 @@ object NetworkBridge {
             runtime.evaluate(bookSource, filename)
             Console.println("", Console.Type.Build)
         } catch (e: Exception) {
-            Log.e("NetworkBridge","runtime.evaluate error, filename: $filename", e)
+            Log.e("NetworkBridge", "runtime.evaluate error, filename: $filename", e)
             Console.println(e.message.orEmpty(), Console.Type.Build)
         }
     }
@@ -536,6 +536,7 @@ object NetworkBridge {
                     )
                 }
             } catch (e: JSDataException) {
+                Log.w("NetWorkBridge", "getProperty headers error", e)
                 //忽略数值错误
             }
             //zip文件提取

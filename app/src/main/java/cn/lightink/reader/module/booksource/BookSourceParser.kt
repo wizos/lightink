@@ -36,13 +36,9 @@ class BookSourceParser(val bookSource: BookSource) {
      */
     fun search(key: String): List<SearchMetadata> {
         if (bookSource.type == "js") {
-            try {
-                return bookSource.js.search(key).map { t ->
-                    SearchMetadata(t.name, t.author, t.cover, "", t.detail)
-                }
-            } catch (e: Exception) {
-                Log.w("BookSourceParser", "search error, key: $key, bookSource: ${bookSource.url}", e)
-            }
+            return bookSource.js.search(key)?.map { t ->
+                SearchMetadata(t.name, t.author, t.cover, "", t.detail)
+            }.orEmpty()
         } else {
             val url = bookSource.json.search.url.replace("\${key}", key.encode(bookSource.json.search.charset))
             val response = BookSourceInterpreter.execute(url, bookSource.json.auth) ?: return emptyList()
@@ -164,7 +160,7 @@ class BookSourceParser(val bookSource: BookSource) {
      */
     fun findContent(title: String = "", url: String, output: String = EMPTY, buffer: StringBuilder = StringBuilder()): String {
         if (bookSource.type == "js") {
-           return bookSource.js.chapter(cn.lightink.reader.transcode.entity.Chapter(title,url))
+           return bookSource.js.chapter(cn.lightink.reader.transcode.entity.Chapter(title,url)).orEmpty()
         } else {
             val response = BookSourceInterpreter.execute(url, bookSource.json.auth) ?: return GET_FAILED_NET_THROWABLE
             //vip章节
@@ -259,7 +255,7 @@ class BookSourceParser(val bookSource: BookSource) {
     fun searchCover(bookName: String): String {
         if (bookSource.type == "js") {
             try {
-                return bookSource.js.search(bookName).firstOrNull { it.name == bookName }?.cover ?: EMPTY
+                return bookSource.js.search(bookName)?.firstOrNull { it.name == bookName }?.cover ?: EMPTY
             } catch (e: Exception) {
                 Log.w("BookSourceParser", "searchCover error, bookName: $bookName, bookSource: ${bookSource.url}", e)
             }

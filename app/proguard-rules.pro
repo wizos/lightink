@@ -1,3 +1,4 @@
+-dontobfuscate
 -ignorewarnings
 
 #指定压缩级别
