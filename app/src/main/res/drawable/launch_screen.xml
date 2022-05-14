@@ -7,6 +7,6 @@
     <item android:bottom="48dp">
         <bitmap
             android:gravity="bottom|center_horizontal"
-            android:src="@mipmap/favicon" />
+            android:src="@mipmap/ic_launcher" />
     </item>
 </layer-list>

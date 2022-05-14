@@ -13,8 +13,3 @@
 #### 特此声明
 
 本软件仅为开源学习之用, 界面模仿自厚墨v1.3, 与厚墨原版无关
-
-
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/Face-scroll-keyboard/lightink.svg)](https://starchart.cc/Face-scroll-keyboard/lightink)
