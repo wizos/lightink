@@ -788,7 +788,13 @@ class ReaderController : ViewModel(), LifecycleObserver {
     /**
      * 当前正在使用的书源屏蔽列表
      */
-    fun getBookSourcePurifyList() = bookSource?.bookSource?.json?.chapter?.purify ?: emptyList()
+    fun getBookSourcePurifyList(): List<String> {
+        if (bookSource?.bookSource?.type == "json") {
+            return bookSource?.bookSource?.json?.chapter?.purify ?: emptyList()
+        } else {
+            return emptyList()
+        }
+    }
 
 
     /**
